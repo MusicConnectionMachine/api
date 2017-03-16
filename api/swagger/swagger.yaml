@@ -52,7 +52,7 @@ paths:
   /website:
     x-swagger-router-controller: website
     get:
-      description: Returns metadata for all matching webpages
+      description: Returns metadata for all matching websites
       operationId: getMatchingSites
       parameters:
         - name: terms
@@ -74,8 +74,8 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
     post:
-      description: Add new webpage to DB
-      operationId: addWebsite
+      description: Add new websites to DB
+      operationId: addWebsites
       parameters:
         - name: apiKey
           in: query
@@ -104,12 +104,12 @@ paths:
   /website/{id}:
     x-swagger-router-controller: website
     get:
-      description: Returns metadata for webpage with specified ID
+      description: Returns metadata for website with specified ID
       operationId: getWebsiteWithID
       parameters:
         - name: id
           in: path
-          description: ID of webpage
+          description: ID of website
           required: true
           type: integer
       responses:
@@ -132,7 +132,7 @@ paths:
           type: string
         - name: id
           in: path
-          description: ID of webpage
+          description: ID of website
           required: true
           type: integer
         - name: body
@@ -161,7 +161,7 @@ paths:
           type: string
         - name: id
           in: path
-          description: ID of webpage
+          description: ID of website
           required: true
           type: integer
       responses:
@@ -174,12 +174,12 @@ paths:
   /download/{filename}:
     x-swagger-router-controller: website
     get:
-      description: Returns content (HTML tags stripped) of webpage with specified filename
+      description: Returns content (HTML tags stripped) of website with specified filename
       operationId: downloadContent
       parameters:
         - name: filename
           in: path
-          description: filename of webpage
+          description: filename of website
           required: true
           type: string
       responses:
