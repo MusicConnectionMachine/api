@@ -150,6 +150,27 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+    delete:
+      description: Delete website
+      operationId: deleteWebsite
+      parameters:
+        - name: apiKey
+          in: query
+          description: API key
+          required: true
+          type: string
+        - name: id
+          in: path
+          description: ID of webpage
+          required: true
+          type: integer
+      responses:
+        "200":
+          description: Success
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"    
   /download/{filename}:
     x-swagger-router-controller: website
     get:
