@@ -18,37 +18,11 @@ consumes:
 produces:
   - application/json
 paths:
-
-  # auto generated hello world
-  /hello:
-    # binds a127 app logic to a route
-    x-swagger-router-controller: hello_world
-    get:
-      description: Returns 'Hello' to the caller
-      # used as the method name of the controller
-      operationId: hello
-      parameters:
-        - name: name
-          in: query
-          description: The name of the person to whom to say hello
-          required: false
-          type: string
-      responses:
-        "200":
-          description: Success
-          schema:
-            # a pointer to a definition
-            $ref: "#/definitions/HelloWorldResponse"
-        # responses may fall through to errors
-        default:
-          description: Error
-          schema:
-            $ref: "#/definitions/ErrorResponse"
   /swagger:
     x-swagger-pipe: swagger_raw
 
 
-  # Group 2 mock up       
+  # Group 2
   /website:
     x-swagger-router-controller: website
     get:
@@ -101,6 +75,7 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+
   /website/{id}:
     x-swagger-router-controller: website
     get:
@@ -171,6 +146,7 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"    
+
   /download/{filename}:
     x-swagger-router-controller: website
     get:
@@ -196,13 +172,6 @@ paths:
 # complex objects have schema definitions
 definitions:
 
-  # auto generated hello world
-  HelloWorldResponse:
-      required:
-        - message
-      properties:
-        message:
-          type: string
   ErrorResponse:
     required:
       - message
@@ -211,7 +180,7 @@ definitions:
         type: string
         
         
-  # Group 2 mock up
+  # Group 2
   WebsiteMetadata:
     properties:
       id:
