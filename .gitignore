@@ -40,4 +40,4 @@ jspm_packages
 .idea
 
 # compiled swagger file
-/config/swagger.json
+/api/swagger/swagger.json

@@ -17,7 +17,7 @@
   },
   "scripts": {
     "postinstall": "npm install -g swagger && npm install -g multi-file-swagger",
-    "start": "cd ./api/swagger/ && multi-file-swagger ./swagger.yaml > ../../config/swagger.json && cd ../../ && node app.js",
+    "start": "cd ./api/swagger/src/ && multi-file-swagger ./swagger.yaml > ../swagger.json && cd ../../../ && node app.js",
     "test": "swagger project test"
   }
 }

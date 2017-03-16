@@ -6,7 +6,7 @@ module.exports = app; // for testing
 
 var config = {
     appRoot: __dirname, // required config
-    swaggerFile: __dirname + '/config/swagger.json'
+    swaggerFile: __dirname + '/api/swagger/swagger.json'
 };
 
 SwaggerExpress.create(config, function (err, swaggerExpress) {
