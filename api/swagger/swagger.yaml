@@ -56,9 +56,11 @@ paths:
       parameters:
         - name: terms
           in: query
-          description: list of entities, e.g. ?terms=entity1+entity2+entity3
+          description: array of entities
           required: false
-          type: string
+          type: array
+          items:
+            type: string
       responses:
         "200":
           description: Success
