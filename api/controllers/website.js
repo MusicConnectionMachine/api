@@ -4,7 +4,7 @@ module.exports = {
     getMatchingSites: getMatchingSites,
     getWebsiteWithID: getWebsiteWithID,
     downloadContent: downloadContent,
-    addWebsite: addWebsite,
+    addWebsites: addWebsites,
     updateWebsite: updateWebsite,
     deleteWebsite: deleteWebsite
 };
@@ -24,7 +24,7 @@ function downloadContent(req, res) {
     res.json('Not implemented!');
 }
 
-function addWebsite(req, res) {
+function addWebsites(req, res) {
     res.status(501);
     res.json('Not implemented!');
 }
