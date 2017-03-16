@@ -50,9 +50,10 @@ paths:
 
   # Group 2 mock up       
   /website:
+    x-swagger-router-controller: website
     get:
       description: Returns metadata for all matching webpages
-      operationId: website
+      operationId: getMatchingSites
       parameters:
         - name: terms
           in: query
@@ -74,7 +75,7 @@ paths:
             $ref: "#/definitions/ErrorResponse"
     post:
       description: Add new webpage to DB
-      operationId: addWebpage
+      operationId: addWebsite
       parameters:
         - name: apiKey
           in: query
@@ -101,9 +102,10 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
   /website/{id}:
+    x-swagger-router-controller: website
     get:
       description: Returns metadata for webpage with specified ID
-      operationId: websiteID
+      operationId: getWebsiteWithID
       parameters:
         - name: id
           in: path
@@ -120,8 +122,8 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
     put:
-      description: Update webpage
-      operationId: updateWebpage
+      description: Update website
+      operationId: updateWebsite
       parameters:
         - name: apiKey
           in: query
@@ -149,9 +151,10 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
   /download/{filename}:
+    x-swagger-router-controller: website
     get:
       description: Returns content (HTML tags stripped) of webpage with specified filename
-      operationId: download
+      operationId: downloadContent
       parameters:
         - name: filename
           in: path
