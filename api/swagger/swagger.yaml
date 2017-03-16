@@ -21,29 +21,29 @@ paths:
 
   # auto generated hello world
   /hello:
-      # binds a127 app logic to a route
-      x-swagger-router-controller: hello_world
-      get:
-        description: Returns 'Hello' to the caller
-        # used as the method name of the controller
-        operationId: hello
-        parameters:
-          - name: name
-            in: query
-            description: The name of the person to whom to say hello
-            required: false
-            type: string
-        responses:
-          "200":
-            description: Success
-            schema:
-              # a pointer to a definition
-              $ref: "#/definitions/HelloWorldResponse"
-          # responses may fall through to errors
-          default:
-            description: Error
-            schema:
-              $ref: "#/definitions/ErrorResponse"
+    # binds a127 app logic to a route
+    x-swagger-router-controller: hello_world
+    get:
+      description: Returns 'Hello' to the caller
+      # used as the method name of the controller
+      operationId: hello
+      parameters:
+        - name: name
+          in: query
+          description: The name of the person to whom to say hello
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/HelloWorldResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /swagger:
     x-swagger-pipe: swagger_raw
 
@@ -162,8 +162,22 @@ definitions:
   # Group 2 mock up
   Website:
     properties:
-      metadata:
-        # just quick prototyping! Type has to change!
+      url:
         type: string
+      occurrences:
+        type: array
+        items:
+          $ref: '#/definitions/Occurrence'
       content:
         type: string
+  Occurrence:
+    properties:
+      entity:
+        type: string
+      role:
+        type: string
+      positions:
+        type: array
+        items:
+          type: integer
+          format: int32
