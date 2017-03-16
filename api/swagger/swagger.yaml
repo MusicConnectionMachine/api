@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
   version: "0.0.1"
-  title: Hello World App
+  title: MusicConnectsMachine API
 # during dev, should point to your local machine
 host: localhost:10010
 # basePath prefixes all resource paths 
@@ -18,43 +18,152 @@ consumes:
 produces:
   - application/json
 paths:
+
+  # auto generated hello world
   /hello:
-    # binds a127 app logic to a route
-    x-swagger-router-controller: hello_world
+      # binds a127 app logic to a route
+      x-swagger-router-controller: hello_world
+      get:
+        description: Returns 'Hello' to the caller
+        # used as the method name of the controller
+        operationId: hello
+        parameters:
+          - name: name
+            in: query
+            description: The name of the person to whom to say hello
+            required: false
+            type: string
+        responses:
+          "200":
+            description: Success
+            schema:
+              # a pointer to a definition
+              $ref: "#/definitions/HelloWorldResponse"
+          # responses may fall through to errors
+          default:
+            description: Error
+            schema:
+              $ref: "#/definitions/ErrorResponse"
+  /swagger:
+    x-swagger-pipe: swagger_raw
+
+
+  # Group 2 mock up       
+  /website:
     get:
-      description: Returns 'Hello' to the caller
-      # used as the method name of the controller
-      operationId: hello
+      description: Returns metadata for all matching webpages
+      operationId: website
       parameters:
-        - name: name
+        - name: terms
           in: query
-          description: The name of the person to whom to say hello
+          description: list of entities, e.g. ?terms=entity1+entity2+entity3
           required: false
           type: string
       responses:
         "200":
           description: Success
-          schema:
-            # a pointer to a definition
-            $ref: "#/definitions/HelloWorldResponse"
-        # responses may fall through to errors
         default:
           description: Error
+    post:
+      description: Add new webpage to DB
+      operationId: addWebpage
+      parameters:
+        - name: apiKey
+          in: query
+          description: API key
+          required: true
+          type: string
+        - name: body
+          in: body
+          description: website metadata and content
+          required: true
           schema:
-            $ref: "#/definitions/ErrorResponse"
-  /swagger:
-    x-swagger-pipe: swagger_raw
+            $ref: '#/definitions/Website'
+      responses:
+        "200":
+          description: Success
+        default:
+          description: Error
+  /website/{id}:
+    get:
+      description: Returns metadata for webpage with specified ID
+      operationId: websiteID
+      parameters:
+        - name: id
+          in: path
+          description: ID of webpage
+          required: true
+          type: integer
+      responses:
+        "200":
+          description: Success
+        default:
+          description: Error
+    put:
+      description: Update webpage
+      operationId: updateWebpage
+      parameters:
+        - name: apiKey
+          in: query
+          description: API key
+          required: true
+          type: string
+        - name: id
+          in: path
+          description: ID of webpage
+          required: true
+          type: integer
+        - name: body
+          in: body
+          description: website metadata and content
+          required: true
+          schema:
+            $ref: '#/definitions/Website'
+      responses:
+        "200":
+          description: Success
+        default:
+          description: Error
+  /download/{filename}:
+    get:
+      description: Returns content (HTML tags stripped) of webpage with specified filename
+      operationId: download
+      parameters:
+        - name: filename
+          in: path
+          description: filename of webpage
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+        default:
+          description: Error 
+          
+    
 # complex objects have schema definitions
 definitions:
+
+  # auto generated hello world
   HelloWorldResponse:
-    required:
-      - message
-    properties:
-      message:
-        type: string
+      required:
+        - message
+      properties:
+        message:
+          type: string
   ErrorResponse:
     required:
       - message
     properties:
       message:
+        type: string
+        
+        
+  # Group 2 mock up
+  Website:
+    properties:
+      metadata:
+        # just quick prototyping! Type has to change!
+        type: string
+      content:
         type: string
