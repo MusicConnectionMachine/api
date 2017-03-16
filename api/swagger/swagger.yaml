@@ -20,7 +20,8 @@ produces:
 paths:
   /swagger:
     x-swagger-pipe: swagger_raw
-  
+
+
   # Group 1
   /entities:
     x-swagger-router-controller: entities
@@ -69,6 +70,7 @@ paths:
       
   
   /entities/{id}:
+    x-swagger-router-controller: entities
     get:  
       description: Retruns entity with specified ID
       operationId: getEntityByID
@@ -284,8 +286,8 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-          
-    
+
+
 # complex objects have schema definitions
 definitions:
 
