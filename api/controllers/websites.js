@@ -33,8 +33,8 @@ function deleteWebsite(req, res) {
     todo(req, res, 'deleteWebsite');
 }
 
-function todo(req, res, funkName) {
+function todo(req, res, functionName) {
     console.log(req.swagger.params);
     res.status(501);
-    res.json(funkName + ' not implemented!');
+    res.json(functionName + ' not implemented!');
 }
