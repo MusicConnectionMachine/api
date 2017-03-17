@@ -10,37 +10,31 @@ module.exports = {
 };
 
 function getMatchingSites(req, res) {
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
+    todo(req, res, 'getMatchingSites');
 }
 
 function getWebsiteByID(req, res) {
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
+    todo(req, res, 'getWebsiteByID');
 }
 
 function downloadContent(req, res) {
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
+    todo(req, res, 'downloadContent');
 }
 
 function addWebsites(req, res) {
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
+    todo(req, res, 'addWebsites');
 }
 
 function updateWebsite(req, res) {
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
+    todo(req, res, 'updateWebsite');
 }
 
 function deleteWebsite(req, res) {
+    todo(req, res, 'deleteWebsite');
+}
+
+function todo(req, res, functionName) {
     console.log(req.swagger.params);
     res.status(501);
-    res.json('Not implemented!');
+    res.json(functionName + ' not implemented!');
 }

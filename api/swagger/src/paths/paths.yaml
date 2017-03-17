@@ -11,11 +11,11 @@
 
 
 # Group 2
-/website:
-  $ref: ./website/website.yaml
+/websites:
+  $ref: ./websites/websites.yaml
 
-/website/{id}:
-  $ref: ./website/website-id.yaml
+/websites/{id}:
+  $ref: ./websites/websites-id.yaml
 
 /download/{filename}:
   $ref: ./download/download-filename.yaml

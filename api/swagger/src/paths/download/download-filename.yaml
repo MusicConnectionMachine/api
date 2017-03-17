@@ -1,4 +1,4 @@
-x-swagger-router-controller: website
+x-swagger-router-controller: websites
 get:
   description: Returns content (HTML tags stripped) of website with specified filename
   operationId: downloadContent

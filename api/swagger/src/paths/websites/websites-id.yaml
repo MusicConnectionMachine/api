@@ -1,4 +1,4 @@
-x-swagger-router-controller: website
+x-swagger-router-controller: websites
 get:
   description: Returns metadata for website with specified ID
   operationId: getWebsiteByID
