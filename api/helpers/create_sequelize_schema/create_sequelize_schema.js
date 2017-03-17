@@ -1,4 +1,5 @@
 var Sequelize = require('sequelize');
+var fs = require('fs');
 
 //read config file
 fs.readFile('config.json', function (err, data) {
@@ -20,145 +21,25 @@ fs.readFile('config.json', function (err, data) {
         }
     });
 
-    //create schema for "artist"
-    var artist = sequelize.define('artist', {
-        name: {
-            type: Sequelize.TEXT
-        },
-        artist_id: {
-            type: Sequelize.UUID,
-            primaryKey: true
-        },
-        artist_type: {
-            type: Sequelize.ENUM('composer', 'musician')
-        },
-        gender: {
-            type: Sequelize.ENUM('male', 'female')
-        },
-        picture: {
-            type: Sequelize.BLOB
-        },
-        dateOfBirth: {
-            type: Sequelize.DATEONLY
-        },
-        placeOfBirth: {
-            type: Sequelize.TEXT
-        },
-        dateOfDeath: {
-            type: Sequelize.DATEONLY
-        },
-        placeOfDeath: {
-            type: Sequelize.TEXT
-        },
-        nationality: {
-            type: Sequelize.TEXT
-        },
-        tags: {
-            type: Sequelize.ARRAY(Sequelize.TEXT)
-        },
-        source_link: {
-            type: Sequelize.TEXT
-        }
-    }, {
-        freezeTableName: true // Model tableName will be the same as the model name
-    });
+    var artist = require('../models/artist');
+    var release = require('../models/release');
+    var work = require('../models/work');
+    var instrument = require('../models/instrument');
+    var entity = require('../models/entity');
+    var page = require('../models/page');
+    var contains = require('../models/contains');
+    //var buildRelations = require('../models/buildRelations');
 
-    //create schema for "release"
-    var release = sequelize.define('release', {
-        title: {
-            type: Sequelize.TEXT
-        },
-        release_id: {
-            type: Sequelize.UUID,
-            primaryKey: true
-        },
-        // ?How should we proceed with "group"?
-        artist_type: {
-            type: Sequelize.ENUM('composer', 'musician')
-        },
-        format: {
-            type: Sequelize.TEXT
-        },
-        date: {
-            type: Sequelize.DATEONLY
-        },
-        country: {
-            type: Sequelize.TEXT
-        },
-        label: {
-            type: Sequelize.TEXT
-        }
-    }, {
-        freezeTableName: true // Model tableName will be the same as the model name
-    });
 
-    //create schema for "recording"
-    var recording = sequelize.define('recording', {
-        title: {
-            type: Sequelize.TEXT
-        },
-        recording_id: {
-            type: Sequelize.UUID,
-            primaryKey: true
-        },
-        date: {
-            type: Sequelize.DATEONLY
-        },
-        length: {
-            type: Sequelize.TIME
-        }
-    }, {
-        freezeTableName: true // Model tableName will be the same as the model name
-    });
 
-    //create schema for "work"
-    var work = sequelize.define('work', {
-        title: {
-            type: Sequelize.TEXT
-        },
-        work_id: {
-            type: Sequelize.UUID,
-            primaryKey: true
-        },
-        compositionyear: {
-            type: Sequelize.INTEGER
-        }
-    }, {
-        freezeTableName: true // Model tableName will be the same as the model name
-    });
-
-    //create schema for "instrument"
-    var instrument = sequelize.define('instrument', {
-        name: {
-            type: Sequelize.TEXT
-        },
-        instrument_id: {
-            type: Sequelize.UUID,
-            primaryKey: true
-        }
-    }, {
-        freezeTableName: true // Model tableName will be the same as the model name
-    });
-
-    //create schema for "group"
-    var group = sequelize.define('group', {
-        name: {
-            type: Sequelize.TEXT
-        },
-        group_id: {
-            type: Sequelize.UUID,
-            primaryKey: true
-        }
-    }, {
-        freezeTableName: true // Model tableName will be the same as the model name
-    });
-
-    artist.sync({force: true});
-    release.sync({force: true});
-    recording.sync({force: true});
-    work.sync({force: true});
-    instrument.sync({force: true});
-    group.sync({force: true});
+    artist(sequelize, Sequelize).sync({force: true});
+    release(sequelize, Sequelize).sync({force: true});
+    work(sequelize, Sequelize).sync({force: true});
+    instrument(sequelize, Sequelize).sync({force: true});
+    entity(sequelize, Sequelize).sync({force: true});
+    page(sequelize, Sequelize).sync({force: true});
+    contains(sequelize, Sequelize).sync({force: true});
+    //buildRelations(sequelize, Sequelize).sync({force: true});
 });
 
 
