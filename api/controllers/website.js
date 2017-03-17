@@ -2,7 +2,7 @@
 
 module.exports = {
     getMatchingSites: getMatchingSites,
-    getWebsiteWithID: getWebsiteWithID,
+    getWebsiteByID: getWebsiteByID,
     downloadContent: downloadContent,
     addWebsites: addWebsites,
     updateWebsite: updateWebsite,
@@ -15,7 +15,7 @@ function getMatchingSites(req, res) {
     res.json('Not implemented!');
 }
 
-function getWebsiteWithID(req, res) {
+function getWebsiteByID(req, res) {
     console.log(req.swagger.params);
     res.status(501);
     res.json('Not implemented!');

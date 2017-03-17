@@ -38,3 +38,6 @@ jspm_packages
 
 # IDE settings
 .idea
+
+# compiled swagger file
+/api/swagger/swagger.json

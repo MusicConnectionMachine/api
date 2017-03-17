@@ -1,5 +1,5 @@
 {
-  "name": "hello-world",
+  "name": "MusicConnectsMachineAPI",
   "version": "0.0.1",
   "private": true,
   "description": "New Swagger API Project",
@@ -16,7 +16,8 @@
     "supertest": "^1.0.0"
   },
   "scripts": {
-    "start": "node app.js",
+    "postinstall": "npm install -g multi-file-swagger",
+    "start": "cd ./api/swagger/src/ && multi-file-swagger ./swagger.yaml > ../swagger.json && cd ../../../ && node app.js",
     "test": "swagger project test"
   }
 }

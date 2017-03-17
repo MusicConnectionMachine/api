@@ -1,0 +1,21 @@
+/swagger:
+    x-swagger-pipe: swagger_raw
+
+
+# Group 1
+/entities:
+  $ref: ./entities/entities.yaml
+
+/entities/{id}:
+  $ref: ./entities/entities-id.yaml
+
+
+# Group 2
+/website:
+  $ref: ./website/website.yaml
+
+/website/{id}:
+  $ref: ./website/website-id.yaml
+
+/download/{filename}:
+  $ref: ./download/download-filename.yaml

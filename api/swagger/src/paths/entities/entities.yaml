@@ -1,0 +1,43 @@
+x-swagger-router-controller: entities
+get:
+  description: Retruns list of all entities
+  operationId: getAllEntities
+  responses:
+    "200":
+      description: Success
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/Entity'
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"
+post:
+  description: Add new entities to DB
+  operationId: addEntities
+  parameters:
+    - name: apiKey
+      in: query
+      description: API key
+      required: true
+      type: string
+    - name: body
+      in: body
+      description: entity data
+      required: true
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/UpdateEntity'
+  responses:
+    "200":
+      description: Success
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/Entity'
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"
