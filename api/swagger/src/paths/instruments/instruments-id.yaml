@@ -1,0 +1,87 @@
+x-swagger-router-controller: instruments
+get:
+  description: Retruns instrument with specified ID
+  operationId: getInstrumentByID
+  parameters:
+    - name: id
+      in: path
+      description: ID of Instrument
+      required: true
+      type: integer
+  responses:
+    "200":
+      description: Success
+      schema:
+        $ref: '#/definitions/Instrument'
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"
+get:
+  description: Returns artists associated with a specific work id
+  operationId: getInstrumentByArtistId
+  parameters:
+    - name: id
+      in: path
+      description: ID of Artist
+      required: true
+      type: integer
+  responses:
+    "200":
+      description: Success
+      schema:
+        $ref: '#/definitions/Instrument'
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"
+put:
+  description: Update instrument
+  operationId: updateInstrument
+  parameters:
+    - name: apiKey
+      in: query
+      description: API key
+      required: true
+      type: string
+    - name: id
+      in: path
+      description: ID of instrument
+      required: true
+      type: integer
+    - name: body
+      in: body
+      description: instrument data
+      required: true
+      schema:
+        $ref: '#/definitions/UpdateInstrument'
+  responses:
+    "200":
+      description: Success
+      schema:
+        $ref: '#/definitions/Instrument'
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"
+delete:
+  description: Delete instrument
+  operationId: deleteInstrument
+  parameters:
+    - name: apiKey
+      in: query
+      description: API key
+      required: true
+      type: string
+    - name: id
+      in: path
+      description: ID of Instrument
+      required: true
+      type: integer
+  responses:
+    "200":
+      description: Success
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"

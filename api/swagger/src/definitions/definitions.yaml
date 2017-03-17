@@ -19,12 +19,92 @@ Entity:
 
 UpdateEntity:
    properties:
+    # TODO!!
+    property1:
+      type: string
+    property2:
+      type: string
+
+Artist:
+  properties:
+    # TODO!!!
+    id:
+      type: integer
+      format: int32
+    property2:
+      type: string
+    property3:
+      type: string
+
+UpdateArtist:
+   properties:
     # TODO!!!
     property1:
       type: string
     property2:
       type: string
 
+Instrument:
+  properties:
+    # TODO!!!
+    id:
+      type: integer
+      format: int32
+    property2:
+      type: string
+    property3:
+      type: string
+
+UpdateInstrument:
+   properties:
+    # TODO!!!
+    property1:
+      type: string
+    property2:
+      type: string
+
+Release:
+  properties:
+    # TODO!!!
+    id:
+      type: integer
+      format: int32
+    property2:
+      type: string
+    property3:
+      type: string
+
+UpdateRelease:
+  properties:
+    # TODO!!!
+    id:
+      type: integer
+      format: int32
+    property2:
+      type: string
+    property3:
+      type: string
+
+Work:
+  properties:
+    # TODO!!!
+    id:
+      type: integer
+      format: int32
+    property2:
+      type: string
+    property3:
+      type: string
+
+UpdateWork:
+  properties:
+    id:
+      type: integer
+      format: int32
+    property2:
+      type: string
+    property3:
+      type: string
 
 # Group 2
 WebsiteMetadata:
@@ -68,4 +148,3 @@ Occurrence:
       items:
         type: integer
         format: int32
-

@@ -1,0 +1,43 @@
+x-swagger-router-controller: instruments
+get:
+  description: Retruns list of all instruments
+  operationId: getAllInstruments
+  responses:
+    "200":
+      description: Success
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/Instrument'
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"
+post:
+  description: Add new instruments to DB
+  operationId: addInstruments
+  parameters:
+    - name: apiKey
+      in: query
+      description: API key
+      required: true
+      type: string
+    - name: body
+      in: body
+      description: instruments data
+      required: true
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/UpdateInstrument'
+  responses:
+    "200":
+      description: Success
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/Instrument'
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"

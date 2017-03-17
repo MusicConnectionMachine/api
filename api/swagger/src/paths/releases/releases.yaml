@@ -1,0 +1,43 @@
+x-swagger-router-controller: releases
+get:
+  description: Retruns list of all releases
+  operationId: getAllReleases
+  responses:
+    "200":
+      description: Success
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/Release'
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"
+post:
+  description: Add new releases to DB
+  operationId: addRelease
+  parameters:
+    - name: apiKey
+      in: query
+      description: API key
+      required: true
+      type: string
+    - name: body
+      in: body
+      description: release data
+      required: true
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/UpdateRelease'
+  responses:
+    "200":
+      description: Success
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/Release'
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"

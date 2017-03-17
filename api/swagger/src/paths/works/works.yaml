@@ -1,0 +1,43 @@
+x-swagger-router-controller: works
+get:
+  description: Retruns list of all works
+  operationId: getAllWorks
+  responses:
+    "200":
+      description: Success
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/Work'
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"
+post:
+  description: Add new works to DB
+  operationId: addWorks
+  parameters:
+    - name: apiKey
+      in: query
+      description: API key
+      required: true
+      type: string
+    - name: body
+      in: body
+      description: work data
+      required: true
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/UpdateWork'
+  responses:
+    "200":
+      description: Success
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/Work'
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"
