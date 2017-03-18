@@ -28,12 +28,12 @@ put:
       type: string
     - name: id
       in: path
-      description: ID of entity
+      description: ID of website
       required: true
       type: integer
     - name: body
       in: body
-      description: entity data
+      description: entity name and type
       required: true
       schema:
         $ref: '#/definitions/UpdateEntity'

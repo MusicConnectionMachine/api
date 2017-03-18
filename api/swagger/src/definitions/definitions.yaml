@@ -8,103 +8,140 @@ ErrorResponse:
 # Group 1
 Entity:
   properties:
-    # TODO!!!
     id:
       type: integer
       format: int32
-    property2:
+    entity_name:
       type: string
-    property3:
+    entity_type:
       type: string
 
 UpdateEntity:
    properties:
-    # TODO!!
-    property1:
-      type: string
-    property2:
-      type: string
+     entity_name:
+       type: string
+     entity_type:
+        type: string
 
 Artist:
   properties:
-    # TODO!!!
     id:
       type: integer
       format: int32
-    property2:
+    name:
       type: string
-    property3:
+    artist_type:
       type: string
+    picture :
+      type: string
+      format: binary
+    dateOfBirth :
+      type: string
+      format: date
+    placeOfDeath :
+      type : string
+    nationality:
+      type : string
+    tags :
+      type : string
+    pseudonym :
+      type : string
+    source_link:
+      type : string
 
 UpdateArtist:
    properties:
-    # TODO!!!
-    property1:
+    name:
       type: string
-    property2:
+    artist_type:
       type: string
+    picture :
+      type: string
+      format: binary
+    dateOfBirth :
+      type: string
+      format: date
+    placeOfDeath :
+      type : string
+    nationality:
+      type : string
+    tags :
+      type : string
+    pseudonym :
+      type : string
+    source_link:
+      type : string
 
 Instrument:
   properties:
-    # TODO!!!
     id:
       type: integer
       format: int32
-    property2:
-      type: string
-    property3:
+    name:
       type: string
 
 UpdateInstrument:
    properties:
-    # TODO!!!
-    property1:
-      type: string
-    property2:
+    name:
       type: string
 
 Release:
   properties:
-    # TODO!!!
     id:
       type: integer
       format: int32
-    property2:
+    title:
       type: string
-    property3:
+    artist_type:
+      type: string
+    format:
+      type: string
+    date :
+      type: string
+      format: date
+    country :
+      type: string
+    label :
       type: string
 
 UpdateRelease:
   properties:
-    # TODO!!!
-    id:
-      type: integer
-      format: int32
-    property2:
+    title:
       type: string
-    property3:
+    artist_type:
+      type: string
+    format:
+      type: string
+    date :
+      type: string
+      format: date
+    country :
+      type: string
+    label :
       type: string
 
 Work:
   properties:
-    # TODO!!!
     id:
       type: integer
       format: int32
-    property2:
+    title:
       type: string
-    property3:
-      type: string
+    compositionyear:
+      type: integer
+      format: int32
 
 UpdateWork:
   properties:
     id:
       type: integer
       format: int32
-    property2:
+    title:
       type: string
-    property3:
-      type: string
+    compositionyear:
+      type: integer
+      format: int32
+
 
 # Group 2
 WebsiteMetadata:
