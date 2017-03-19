@@ -1,21 +1,21 @@
-x-swagger-router-controller: entities
+x-swagger-router-controller: instruments
 get:
-  description: Retruns list of all entities
-  operationId: getAllEntities
+  description: Retruns list of all instruments
+  operationId: getAllInstruments
   responses:
     "200":
       description: Success
       schema:
         type: array
         items:
-          $ref: '#/definitions/Entity'
+          $ref: '#/definitions/Instrument'
     default:
       description: Error
       schema:
         $ref: "#/definitions/ErrorResponse"
 post:
-  description: Add new entities to DB
-  operationId: addEntities
+  description: Add new instruments to DB
+  operationId: addInstruments
   parameters:
     - name: apiKey
       in: query
@@ -24,19 +24,19 @@ post:
       type: string
     - name: body
       in: body
-      description: entity data
+      description: instruments data
       required: true
       schema:
         type: array
         items:
-          $ref: '#/definitions/UpdateEntity'
+          $ref: '#/definitions/UpdateInstrument'
   responses:
     "200":
       description: Success
       schema:
         type: array
         items:
-          $ref: '#/definitions/Entity'
+          $ref: '#/definitions/Instrument'
     default:
       description: Error
       schema:

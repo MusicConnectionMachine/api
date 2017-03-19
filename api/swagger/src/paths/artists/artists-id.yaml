@@ -1,0 +1,144 @@
+x-swagger-router-controller: artists
+get:
+  description: Returns artists with specified ID
+  operationId: getArtistByID
+  parameters:
+    - name: id
+      in: path
+      description: ID of artist
+      required: true
+      type: integer
+    - name: name
+      in: path
+      description: name of artist
+      required: true
+      type: string
+    - name: artist_type
+      in: path
+      description: type of artist
+      required: true
+      type: string
+    - name: picture
+      in: path
+      description: picture of artist
+      required: true
+      type: string
+      format : binary
+    - name: dateOfBirth
+      in: path
+      description: artist's date of birth
+      required: true
+      type: string
+      format : date
+    - name: placeOfBirth
+      in: path
+      description: artist's place of birth
+      required: true
+    - name: dateOfDeath
+      in: path
+      description: artist's date of death
+      required: true
+      type: string
+      format : date
+    - name: placeOfDeath
+      in: path
+      description: artist's date of birth
+      required: true
+      type : string
+    - name: nationality
+      in: path
+      description: artist's nationality
+      required: true
+      type : string
+    - name: tags
+      in: path
+      description: tags
+      required: true
+      type : string
+    - name: pseudonym
+      in: path
+      description: tags
+      required: true
+      type : string
+    - name: source_link
+      in: path
+      description: url of the sources of this information
+      required: true
+      type : string
+  responses:
+    "200":
+      description: Success
+      schema:
+        $ref: '#/definitions/Artist'
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"
+get:
+  description: Returns artists associated with a specific work id
+  operationId: getArtistByWorkID
+  parameters:
+    - name: id
+      in: path
+      description: ID of work
+      required: true
+      type: integer
+  responses:
+    "200":
+      description: Success
+      schema:
+        $ref: '#/definitions/Artist'
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"
+put:
+  description: Updates the artist with specified ID
+  operationId: updateArtist
+  parameters:
+    - name: apiKey
+      in: query
+      description: API key
+      required: true
+      type: string
+    - name: id
+      in: path
+      description: ID of artist
+      required: true
+      type: integer
+    - name: body
+      in: body
+      description: artist data
+      required: true
+      schema:
+        $ref: '#/definitions/UpdateArtist'
+  responses:
+    "200":
+      description: Success
+      schema:
+        $ref: '#/definitions/Artist'
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"
+delete:
+  description: Delete artist
+  operationId: deleteArtist
+  parameters:
+    - name: apiKey
+      in: query
+      description: API key
+      required: true
+      type: string
+    - name: id
+      in: path
+      description: ID of artist
+      required: true
+      type: integer
+  responses:
+    "200":
+      description: Success
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"

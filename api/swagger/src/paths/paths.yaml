@@ -9,6 +9,29 @@
 /entities/{id}:
   $ref: ./entities/entities-id.yaml
 
+/artists:
+  $ref: ./artists/artists.yaml
+
+/artists/{id}:
+  $ref: ./artists/artists-id.yaml
+
+/releases:
+  $ref: ./releases/releases.yaml
+
+/releases/{id}:
+    $ref: ./releases/releases-id.yaml
+
+/works:
+  $ref: ./works/works.yaml
+
+/works/{id}:
+  $ref: ./works/works-id.yaml
+
+/instruments:
+  $ref: ./instruments/instruments.yaml
+
+/instruments/{id}:
+  $ref: ./instruments/instruments-id.yaml
 
 # Group 2
 /websites:

@@ -8,22 +8,139 @@ ErrorResponse:
 # Group 1
 Entity:
   properties:
-    # TODO!!!
     id:
       type: integer
       format: int32
-    property2:
+    entity_name:
       type: string
-    property3:
+    entity_type:
       type: string
 
 UpdateEntity:
    properties:
-    # TODO!!!
-    property1:
+     entity_name:
+       type: string
+     entity_type:
+        type: string
+
+Artist:
+  properties:
+    id:
+      type: integer
+      format: int32
+    name:
       type: string
-    property2:
+    artist_type:
       type: string
+    picture :
+      type: string
+      format: binary
+    dateOfBirth :
+      type: string
+      format: date
+    placeOfDeath :
+      type : string
+    nationality:
+      type : string
+    tags :
+      type : string
+    pseudonym :
+      type : string
+    source_link:
+      type : string
+
+UpdateArtist:
+   properties:
+    name:
+      type: string
+    artist_type:
+      type: string
+    picture :
+      type: string
+      format: binary
+    dateOfBirth :
+      type: string
+      format: date
+    placeOfDeath :
+      type : string
+    nationality:
+      type : string
+    tags :
+      type : string
+    pseudonym :
+      type : string
+    source_link:
+      type : string
+
+Instrument:
+  properties:
+    id:
+      type: integer
+      format: int32
+    name:
+      type: string
+
+UpdateInstrument:
+   properties:
+    name:
+      type: string
+
+Release:
+  properties:
+    id:
+      type: integer
+      format: int32
+    title:
+      type: string
+    artist_type:
+      type: string
+    format:
+      type: string
+    date :
+      type: string
+      format: date
+    country :
+      type: string
+    label :
+      type: string
+
+UpdateRelease:
+  properties:
+    title:
+      type: string
+    artist_type:
+      type: string
+    format:
+      type: string
+    date :
+      type: string
+      format: date
+    country :
+      type: string
+    label :
+      type: string
+
+Work:
+  properties:
+    id:
+      type: integer
+      format: int32
+    title:
+      type: string
+    compositionyear:
+      type: integer
+      format: int32
+
+UpdateWork:
+  properties:
+    id:
+      type: integer
+      format: int32
+    title:
+      type: string
+    compositionyear:
+      type: integer
+      format: int32
 
 
 # Group 2
@@ -68,4 +185,3 @@ Occurrence:
       items:
         type: integer
         format: int32
-

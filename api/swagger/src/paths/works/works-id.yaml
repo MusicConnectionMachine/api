@@ -1,25 +1,25 @@
-x-swagger-router-controller: entities
+x-swagger-router-controller: works
 get:
-  description: Retruns entity with specified ID
-  operationId: getEntityByID
+  description: Returns works with specified ID
+  operationId: getWorkByID
   parameters:
     - name: id
       in: path
-      description: ID of entity
+      description: ID of work
       required: true
       type: integer
   responses:
     "200":
       description: Success
       schema:
-        $ref: '#/definitions/Entity'
+        $ref: '#/definitions/Work'
     default:
       description: Error
       schema:
         $ref: "#/definitions/ErrorResponse"
 put:
-  description: Update entity
-  operationId: updateEntity
+  description: Update work
+  operationId: updateWork
   parameters:
     - name: apiKey
       in: query
@@ -28,27 +28,27 @@ put:
       type: string
     - name: id
       in: path
-      description: ID of website
+      description: ID of work
       required: true
       type: integer
     - name: body
       in: body
-      description: entity name and type
+      description: work data
       required: true
       schema:
-        $ref: '#/definitions/UpdateEntity'
+        $ref: '#/definitions/UpdateWork'
   responses:
     "200":
       description: Success
       schema:
-        $ref: '#/definitions/Entity'
+        $ref: '#/definitions/Work'
     default:
       description: Error
       schema:
         $ref: "#/definitions/ErrorResponse"
 delete:
-  description: Delete entity
-  operationId: deleteEntity
+  description: Delete Work
+  operationId: deleteWork
   parameters:
     - name: apiKey
       in: query
@@ -57,7 +57,7 @@ delete:
       type: string
     - name: id
       in: path
-      description: ID of entity
+      description: ID of work
       required: true
       type: integer
   responses:
