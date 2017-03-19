@@ -8,7 +8,7 @@ module.exports = function (sequelize, Sequelize) {
             type: Sequelize.TEXT
         },
         filelocation: {
-            type: Sequelize.DATEONLY
+            type: Sequelize.TEXT
         }
     }, {
         freezeTableName: true // Model tableName will be the same as the model name

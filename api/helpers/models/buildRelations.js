@@ -3,33 +3,33 @@
  */
 module.exports = function (sequelize, Sequelize) {
     return function () {
-        var artist = require('./artist');
-        var work = require('../models/work');
-        var release = require('../models/release');
-        var instrument = require('../models/instrument');
-        var entity = require('../models/entity');
-        var page = require('../models/page');
-        var contains = require('../models/contains');
+        var artist = require('./artist')(sequelize, Sequelize);
+        var work = require('../models/work')(sequelize, Sequelize);
+        var release = require('../models/release')(sequelize, Sequelize);
+        var instrument = require('../models/instrument')(sequelize, Sequelize);
+        var entity = require('../models/entity')(sequelize, Sequelize);
+        var page = require('../models/page')(sequelize, Sequelize);
+        var contains = require('../models/contains')(sequelize, Sequelize);
 
         //define relations for artist
-        artist(sequelize, Sequelize).belongsToMany(work, {through:workComposedByArtist});
-        artist(sequelize, Sequelize).belongsToMany(instrument, {through:instrumentPlayedByArtist});
-        artist(sequelize, Sequelize).belongsToMany(instrument, {through:instrumentComposedForByArtist});
-        artist(sequelize, Sequelize).belongsToMany(release, {through:releaseByArtist});
+        artist.belongsToMany(work, {through:'ArtistComposedWork'});
+        artist.belongsToMany(instrument, {through:'ArtistPlayedInstrument'});
+        artist.belongsToMany(instrument, {through:'ArtistComposedInstrument'});
+        artist.belongsToMany(release, {through:'ArtistPerformedRelease'});
 
         //define relations for work
-        work(sequelize, Sequelize).belongsToMany(artist, {through:ArtistWhoComposedWork});
+        work.belongsToMany(artist, {through:'ArtistComposedWork'});
 
         //define relations for release
-        release(sequelize, Sequelize).belongsToMany(artist, {through:ArtistWhoPerformedRelease});
+        release.belongsToMany(artist, {through:'ArtistPerformedRelease'});
 
         //define relations for instrument
-        instrument(sequelize, Sequelize).belongsToMany(artist, {through:ArtistWhoPlayInstrument});
-        instrument(sequelize, Sequelize).belongsToMany(artist, {through:ArtistWhoComposedForInstrument});
+        instrument.belongsToMany(artist, {through:'ArtistPlayedInstrument'});
+        instrument.belongsToMany(artist, {through:'ArtistComposedInstrument'});
 
         //define relations for contains
-        contains(sequelize, Sequelize).belongsTo(page);
-        contains(sequelize, Sequelize).belongsTo(entity);
+        contains.belongsTo(page);
+        contains.belongsTo(entity);
 
 
 

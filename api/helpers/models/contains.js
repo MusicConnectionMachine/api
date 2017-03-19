@@ -1,5 +1,5 @@
 module.exports = function (sequelize, Sequelize) {
-    var contains = sequelize.define('contains', {
+    return sequelize.define('contains', {
         contains_id: {
             type: Sequelize.UUID,
             primaryKey: true
@@ -10,9 +10,6 @@ module.exports = function (sequelize, Sequelize) {
     }, {
         freezeTableName: true // Model tableName will be the same as the model name
     });
-
-
-    return contains;
 };
 
 
