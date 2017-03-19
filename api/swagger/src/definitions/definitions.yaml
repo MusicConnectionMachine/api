@@ -148,7 +148,7 @@ WebsiteMetadata:
   properties:
     id:
       type: integer
-      format: int32
+      format: int64
     downloadPath:
       type: string
     url:
@@ -160,6 +160,21 @@ WebsiteMetadata:
 
 WebsiteContent:
   properties:
+    content:
+      type: string
+
+Website:
+  required:
+    - url
+    - occurrences
+    - content
+  properties:
+    url:
+      type: string
+    occurrences:
+      type: array
+      items:
+        $ref: '#/definitions/Occurrence'
     content:
       type: string
 
@@ -175,8 +190,11 @@ UpdateWebsite:
       type: string
 
 Occurrence:
+  required:
+    - entityName
+    - positions
   properties:
-    entity:
+    entityName:
       type: string
     role:
       type: string
