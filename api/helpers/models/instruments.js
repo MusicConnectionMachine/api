@@ -1,14 +1,11 @@
 module.exports = function (sequelize, Sequelize) {
-    return sequelize.define('page', {
-        page_id: {
+    return sequelize.define('instruments', {
+        name: {
+            type: Sequelize.TEXT
+        },
+        instrument_id: {
             type: Sequelize.UUID,
             primaryKey: true
-        },
-        url: {
-            type: Sequelize.TEXT
-        },
-        filelocation: {
-            type: Sequelize.TEXT
         }
     }, {
         freezeTableName: true // Model tableName will be the same as the model name

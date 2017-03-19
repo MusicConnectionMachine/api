@@ -1,5 +1,5 @@
 module.exports = function (sequelize, Sequelize) {
-    return sequelize.define('work', {
+    return sequelize.define('works', {
         title: {
             type: Sequelize.TEXT
         },

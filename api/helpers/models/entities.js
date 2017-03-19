@@ -1,5 +1,5 @@
 module.exports = function (sequelize, Sequelize) {
-    return sequelize.define('entity', {
+    return sequelize.define('entities', {
         entity_id: {
             type: Sequelize.UUID,
             primaryKey: true

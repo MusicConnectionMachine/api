@@ -13,12 +13,12 @@ var sequelize = new Sequelize(config.database, config.username, config.password,
     }
 });
 
-var artist = require('../models/artist')(sequelize, Sequelize);
-var release = require('../models/release')(sequelize, Sequelize);
-var work = require('../models/work')(sequelize, Sequelize);
-var instrument = require('../models/instrument')(sequelize, Sequelize);
-var entity = require('../models/entity')(sequelize, Sequelize);
-var page = require('../models/page')(sequelize, Sequelize);
+var artists = require('../models/artists')(sequelize, Sequelize);
+var releases = require('../models/releases')(sequelize, Sequelize);
+var works = require('../models/works')(sequelize, Sequelize);
+var instruments = require('../models/instruments')(sequelize, Sequelize);
+var entitys = require('../models/entities')(sequelize, Sequelize);
+var pages = require('../models/pages')(sequelize, Sequelize);
 var contains = require('../models/contains')(sequelize, Sequelize);
 var buildRelations = require('../models/buildRelations')(sequelize, Sequelize)();
 
