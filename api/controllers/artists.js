@@ -1,47 +1,46 @@
 'use strict';
+module.exports = function (context) {
+    // Imports
+    var artists = context.component('models').module('artists');
 
-module.exports = {
-    getAllArtists: getAllArtists,
-    getArtistByID: getArtistsByID,
-    getArtistByWorkID:getArtistByWorkID,
-    addArtists: addArtists,
-    updateArtist: updateArtist,
-    deleteArtist: deleteArtist
+    return {
+        getAllArtists: function (req, res) {
+            console.log(req.swagger.params);
 
-};
-
-function getAllArtists(req, res) {
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
-}
-
-function getArtistsByID(req, res) {
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
-}
-
-function addArtists(req, res) {
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
-}
-
-function updateArtist(req, res) {
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
-}
-
-function deleteArtist(req, res) {
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
-}
-
-function getArtistByWorkID(req, res){
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
+            artists.findAll(function (err, list) {
+                if(err){
+                    console.log(err);
+                    return
+                }
+                res.status(200).json(list);
+            });
+            res.status(501);
+            res.json('Not implemented!');
+        },
+        getArtistsByID: function (req, res) {
+            console.log(req.swagger.params);
+            res.status(501);
+            res.json('Not implemented!');
+        },
+        addArtists: function (req, res) {
+            console.log(req.swagger.params);
+            res.status(501);
+            res.json('Not implemented!');
+        },
+        updateArtist: function (req, res) {
+            console.log(req.swagger.params);
+            res.status(501);
+            res.json('Not implemented!');
+        },
+        deleteArtist: function (req, res) {
+            console.log(req.swagger.params);
+            res.status(501);
+            res.json('Not implemented!');
+        },
+        getArtistByWorkID: function (req, res) {
+            console.log(req.swagger.params);
+            res.status(501);
+            res.json('Not implemented!');
+        }
+    }
 }

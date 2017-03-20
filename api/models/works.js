@@ -1,5 +1,5 @@
-module.exports = function (sequelize, Sequelize) {
-    return sequelize.define('works', {
+module.exports = function (context) {
+    return context.sequelize.define('works', {
         id: {
             type: Sequelize.UUID,
             primaryKey: true
