@@ -4,12 +4,12 @@
 module.exports = function (sequelize, Sequelize) {
     return function () {
         var artists = require('./artists')(sequelize, Sequelize);
-        var works = require('works')(sequelize, Sequelize);
-        var releases = require('releases')(sequelize, Sequelize);
-        var instruments = require('instruments')(sequelize, Sequelize);
-        var entities = require('entities')(sequelize, Sequelize);
-        var pages = require('pages')(sequelize, Sequelize);
-        var contains = require('contains')(sequelize, Sequelize);
+        var works = require('./works')(sequelize, Sequelize);
+        var releases = require('./releases')(sequelize, Sequelize);
+        var instruments = require('./instruments')(sequelize, Sequelize);
+        var entities = require('./entities')(sequelize, Sequelize);
+        var pages = require('./pages')(sequelize, Sequelize);
+        var contains = require('./contains')(sequelize, Sequelize);
 
         //define relations for artist
         artists.belongsToMany(works, {through:'ArtistComposedWork'});

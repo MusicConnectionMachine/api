@@ -1,13 +1,13 @@
 module.exports = function (sequelize, Sequelize) {
     return sequelize.define('entities', {
-        entity_id: {
+        id: {
             type: Sequelize.UUID,
             primaryKey: true
         },
         entity_type: {
             type: Sequelize.ENUM('artist', 'work', 'release', 'instrument')
         },
-        type_id: {
+        entity_id: {
             type: Sequelize.UUID
         }
     }, {
