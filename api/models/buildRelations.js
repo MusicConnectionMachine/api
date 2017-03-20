@@ -1,15 +1,16 @@
 /**
  * this will build the relations between the different tables after those tables were created (this would otherwise cause a referenceNotFound error)
  */
-module.exports = function (sequelize, Sequelize) {
+module.exports = function (context) {
     return function () {
-        var artists = require('./artists')(sequelize, Sequelize);
-        var works = require('./works')(sequelize, Sequelize);
-        var releases = require('./releases')(sequelize, Sequelize);
-        var instruments = require('./instruments')(sequelize, Sequelize);
-        var entities = require('./entities')(sequelize, Sequelize);
-        var pages = require('./pages')(sequelize, Sequelize);
-        var contains = require('./contains')(sequelize, Sequelize);
+        var artists = context.component('models').module('artists');
+        var works = context.component('models').module('works');
+        var releases = context.component('models').module('releases');
+        var instruments = context.component('models').module('instruments');
+        var entities = context.component('models').module('entities');
+        var pages = context.component('models').module('pages');
+        var contains = context.component('models').module('contains');
+
 
         //define relations for artist
         artists.belongsToMany(works, {through:'ArtistComposedWork'});
