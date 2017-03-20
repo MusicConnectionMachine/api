@@ -11,17 +11,18 @@ Entity:
     id:
       type: integer
       format: int32
-    entity_name:
-      type: string
     entity_type:
       type: string
-
+    entity_id:
+      type: integer
+      format: int32
 UpdateEntity:
-   properties:
-     entity_name:
-       type: string
-     entity_type:
-        type: string
+  properties:
+    entity_type:
+      type: string
+    entity_id:
+      type: integer
+      format: int32
 
 Artist:
   properties:
@@ -38,14 +39,23 @@ Artist:
     dateOfBirth :
       type: string
       format: date
+    placeOfBirth :
+        type : string
+    dateOfDeath :
+      type: string
+      format: date
     placeOfDeath :
       type : string
     nationality:
       type : string
     tags :
-      type : string
+      type: array
+      items:
+        type: string
     pseudonym :
-      type : string
+      type: array
+      items:
+        type: string
     source_link:
       type : string
 
@@ -61,14 +71,23 @@ UpdateArtist:
     dateOfBirth :
       type: string
       format: date
+    placeOfBirth :
+      type : string
+    dateOfDeath :
+      type: string
+      format: date
     placeOfDeath :
       type : string
     nationality:
       type : string
     tags :
-      type : string
+      type: array
+      items:
+        type: string
     pseudonym :
-      type : string
+      type: array
+      items:
+        type: string
     source_link:
       type : string
 
@@ -92,8 +111,6 @@ Release:
       format: int32
     title:
       type: string
-    artist_type:
-      type: string
     format:
       type: string
     date :
@@ -107,8 +124,6 @@ Release:
 UpdateRelease:
   properties:
     title:
-      type: string
-    artist_type:
       type: string
     format:
       type: string
@@ -133,9 +148,6 @@ Work:
 
 UpdateWork:
   properties:
-    id:
-      type: integer
-      format: int32
     title:
       type: string
     compositionyear:

@@ -3,7 +3,7 @@ module.exports = function (sequelize, Sequelize) {
         name: {
             type: Sequelize.TEXT
         },
-        artist_id: {
+        id: {
             type: Sequelize.UUID,
             primaryKey: true
         },

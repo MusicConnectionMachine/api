@@ -1,11 +1,11 @@
 module.exports = function (sequelize, Sequelize) {
     return sequelize.define('releases', {
-        title: {
-            type: Sequelize.TEXT
-        },
-        release_id: {
+        id: {
             type: Sequelize.UUID,
             primaryKey: true
+        },
+        title: {
+            type: Sequelize.TEXT
         },
         format: {
             type: Sequelize.TEXT

@@ -1,11 +1,11 @@
 module.exports = function (sequelize, Sequelize) {
     return sequelize.define('works', {
-        title: {
-            type: Sequelize.TEXT
-        },
-        work_id: {
+        id: {
             type: Sequelize.UUID,
             primaryKey: true
+        },
+        title: {
+            type: Sequelize.TEXT
         },
         compositionyear: {
             type: Sequelize.INTEGER

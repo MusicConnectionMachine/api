@@ -1,6 +1,6 @@
 module.exports = function (sequelize, Sequelize) {
     return sequelize.define('pages', {
-        page_id: {
+        id: {
             type: Sequelize.UUID,
             primaryKey: true
         },
