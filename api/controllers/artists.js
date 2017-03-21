@@ -5,16 +5,13 @@ var artists = context.component('dsap').module('artists');
 
 module.exports = {
     getAllArtists: getAllArtists,
-    getArtistByID:getArtistByID,
-    addArtist:addArtist,
-    updateArtist:updateArtist,
-    getArtistByWorkID:getArtistByWorkID,
-    deleteArtist:deleteArtist
+    getArtistByID: getArtistByID,
+    addArtist: addArtist,
+    updateArtist: updateArtist,
+    deleteArtist: deleteArtist
 };
 
 function getAllArtists(req, res) {
-    console.log(req.swagger.params);
-
     artists.findAllArtists().then(function(list) {
         res.status(200).json(list);
     }).catch(function(error) {
@@ -60,8 +57,8 @@ function deleteArtist(req, res) {
         res.status(500).send(error);
     });
 }
+
 function getArtistByWorkID(req, res) {
-  console.log(req.swagger.params);
-  res.status(501);
-  res.json('Not implemented!');
+    res.status(501);
+    res.json('Not implemented!');
 }
