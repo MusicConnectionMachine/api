@@ -1,14 +1,14 @@
 module.exports = function (context) {
     return context.sequelize.define('works', {
         id: {
-            type: Sequelize.UUID,
+            type: context.Sequelize.UUID,
             primaryKey: true
         },
         title: {
-            type: Sequelize.TEXT
+            type: context.Sequelize.TEXT
         },
         compositionyear: {
-            type: Sequelize.INTEGER
+            type: context.Sequelize.INTEGER
         }
     }, {
         freezeTableName: true // Model tableName will be the same as the model name
