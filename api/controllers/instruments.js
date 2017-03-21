@@ -1,45 +1,65 @@
 'use strict';
+const path = require('path');
+var context = require(path.join(__dirname, '../../index.js')).getContext();
+var instruments = context.component('dsap').module('instruments');
 
 module.exports = {
     getAllInstruments: getAllInstruments,
     getInstrumentByID: getInstrumentByID,
-    getInstrumentByArtistId: getInstrumentByArtistId,
-    addInstruments: addInstruments,
+    getInstrumentByWorkID: getInstrumentByWorkID,
+    addInstrument: addInstrument,
     updateInstrument: updateInstrument,
     deleteInstrument: deleteInstrument
 };
 
 function getAllInstruments(req, res) {
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
+    instruments.findAllInstruments().then(function(list) {
+        res.status(200).json(list);
+    }).catch(function(error) {
+        res.status(500).send(error);
+    });
 }
 
 function getInstrumentByID(req, res) {
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
+    var id = req.swagger.params.id.value;
+    instruments.findInstrumentsById(id).then(function(instrumentInfo) {
+        res.status(200).json(instrumentInfo);
+    }).catch(function(error) {
+        res.status(500).send(error);
+    });
 }
 
-function addInstruments(req, res) {
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
+//add one instrument
+function addInstrument(req, res) {
+    var instrumentObject = req.body;
+    instruments.addInstrument(instrumentObject).then(function(list) {
+        res.status(200).json(list);
+    }).catch(function(error) {
+        res.status(500).send(error);
+    });
 }
 
+//update one instrument
 function updateInstrument(req, res) {
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
+    var id = req.swagger.params.id.value;
+    var instrumentObject = req.body;
+    instruments.updateInstrument(id, instrumentObject).then(function(list) {
+        res.status(200).json(list);
+    }).catch(function(error) {
+        res.status(500).send(error);
+    });
 }
 
 function deleteInstrument(req, res) {
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
+    var id = req.swagger.params.id.value;
+    instruments.deleteInstrument(id).then(function(list) {
+        res.status(200).json(list);
+    }).catch(function(error) {
+        res.status(500).send(error);
+    });
 }
 
-function getInstrumentByArtistId(req, res){
+function getInstrumentByWorkID(req, res){
     console.log(req.swagger.params);
     res.status(501);
     res.json('Not implemented!');

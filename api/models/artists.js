@@ -1,46 +1,43 @@
 module.exports = function (context) {
     return context.sequelize.define('artists', {
         name: {
-            type: Sequelize.TEXT
+            type: context.Sequelize.TEXT
         },
         id: {
-            type: Sequelize.UUID,
+            type: context.Sequelize.UUID,
             primaryKey: true
         },
         artist_type: {
-            type: Sequelize.ENUM('composer', 'musician')
+            type: context.Sequelize.ENUM('composer', 'musician')
         },
         picture: {
-            type: Sequelize.BLOB
+            type: context.Sequelize.BLOB
         },
         dateOfBirth: {
-            type: Sequelize.DATEONLY
+            type: context.Sequelize.DATEONLY
         },
         placeOfBirth: {
-            type: Sequelize.TEXT
+            type: context.Sequelize.TEXT
         },
         dateOfDeath: {
-            type: Sequelize.DATEONLY
+            type: context.Sequelize.DATEONLY
         },
         placeOfDeath: {
-            type: Sequelize.TEXT
+            type: context.Sequelize.TEXT
         },
         nationality: {
-            type: Sequelize.TEXT
+            type: context.Sequelize.TEXT
         },
         tags: {
-            type: Sequelize.ARRAY(Sequelize.TEXT)
+            type: context.Sequelize.ARRAY(context.Sequelize.TEXT)
         },
         pseudonym: {
-            type: Sequelize.ARRAY(Sequelize.TEXT)
+            type: context.Sequelize.ARRAY(context.Sequelize.TEXT)
         },
         source_link: {
-            type: Sequelize.TEXT
+            type: context.Sequelize.TEXT
         }
     }, {
         freezeTableName: true // Model tableName will be the same as the model name
     });
 }
-
-
-

@@ -15,7 +15,7 @@ get:
         $ref: "#/definitions/ErrorResponse"
 post:
   description: Add new entities to DB
-  operationId: addEntities
+  operationId: addEntity
   parameters:
     - name: apiKey
       in: query
