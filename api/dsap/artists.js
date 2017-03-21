@@ -32,7 +32,7 @@ module.exports = function(context) {
                 });
             },
             updateArtist: function(id, artistObject) {
-                artists.update(artist_obj).then(function() {
+                artists.update(artistObject).then(function() {
                     return artists.findAll({
                         attributes: ['name', 'id', 'artist_type', 'picture', 'dateOfBirth', 'placeOfBirth', 'dateOfDeath',
                             'placeOfDeath', 'nationality', 'tags', 'pseudonym', 'source_link'
