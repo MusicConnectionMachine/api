@@ -15,7 +15,7 @@ get:
         $ref: "#/definitions/ErrorResponse"
 post:
   description: Add new instruments to DB
-  operationId: addInstruments
+  operationId: addInstrument
   parameters:
     - name: apiKey
       in: query

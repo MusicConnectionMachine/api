@@ -7,7 +7,6 @@ var releases = context.component('dsap').module('releases');
 module.exports = {
     getAllReleases: getAllReleases,
     getReleaseByID: getReleaseByID,
-    //getReleaseByArtistID:getReleaseByArtistID,
     addReleases: addReleases,
     updateRelease: updateRelease,
     deleteRelease: deleteRelease
@@ -65,5 +64,3 @@ function getReleaseByReleaseID(req,res){
     res.status(501);
     res.json('Not implemented!');
 }
-
-

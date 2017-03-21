@@ -6,8 +6,8 @@ var instruments = context.component('dsap').module('instruments');
 module.exports = {
     getAllInstruments: getAllInstruments,
     getInstrumentByID: getInstrumentByID,
-    getInstrumentByInstrumentId: getInstrumentByInstrumentId,
-    addInstruments: addInstruments,
+    getInstrumentByWorkID: getInstrumentByWorkID,
+    addInstrument: addInstrument,
     updateInstrument: updateInstrument,
     deleteInstrument: deleteInstrument
 };
