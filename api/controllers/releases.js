@@ -1,46 +1,69 @@
 'use strict';
 
+const path = require('path');
+var context = require(path.join(__dirname, '../../index.js')).getContext();
+var releases = context.component('dsap').module('releases');
+
 module.exports = {
     getAllReleases: getAllReleases,
     getReleaseByID: getReleaseByID,
-    getReleaseByArtistID:getReleaseByArtistID,
+    //getReleaseByArtistID:getReleaseByArtistID,
     addReleases: addReleases,
     updateRelease: updateRelease,
     deleteRelease: deleteRelease
 };
 
 function getAllReleases(req, res) {
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
+    releases.findAllReleases().then(function(list) {
+        res.status(200).json(list);
+    }).catch(function(error) {
+        res.status(500).send(error);
+    });
+
 }
 
 function getReleaseByID(req, res) {
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
+    var id = req.swagger.params.id.value;
+    releases.findReleasesById(id).then(function(releaseInfo) {
+        res.status(200).json(releaseInfo);
+    }).catch(function(error) {
+        res.status(500).send(error);
+    });
 }
 
-function getReleaseByArtistID(req,res){
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
-}
 
 function addReleases(req, res) {
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
+    var releaseObject = req.body;
+    releases.addRelease(releaseObject).then(function(list) {
+        res.status(200).json(list);
+    }).catch(function(error) {
+        res.status(500).send(error);
+    });
 }
 
 function updateRelease(req, res) {
+    var id = req.swagger.params.id.value;
+    var releaseObject = req.body;
+    releases.updateRelease(id, releaseObject).then(function(list) {
+        res.status(200).json(list);
+    }).catch(function(error) {
+        res.status(500).send(error);
+    });
+}
+
+function deleteRelease(req, res) {
+    var id = req.swagger.params.id.value;
+    releases.deleteRelease(id).then(function(list) {
+        res.status(200).json(list);
+    }).catch(function(error) {
+        res.status(500).send(error);
+    });
+}
+
+function getReleaseByReleaseID(req,res){
     console.log(req.swagger.params);
     res.status(501);
     res.json('Not implemented!');
 }
 
-function deleteRelease(req, res) {
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
-}
+
