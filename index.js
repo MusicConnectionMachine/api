@@ -1,9 +1,8 @@
 var context;
 
 module.exports = {
-    start: function (callback) {
-        callback = callback || function () {
-            };
+    start: function(callback) {
+        callback = callback || function() {};
 
         // Imports
         const pg = require('pg');
@@ -21,13 +20,13 @@ module.exports = {
         };
 
         // Function to load all components from the respective folders (models, controllers,  )
-        context.component = function (componentName) {
+        context.component = function(componentName) {
             if (!context[componentName]) {
                 context[componentName] = {};
             }
 
             return {
-                module: function (moduleName) {
+                module: function(moduleName) {
                     if (!context[componentName][moduleName]) {
                         console.log('Loading component ' + componentName);
                         context[componentName][moduleName] = require(path.join(__dirname, "api", componentName, moduleName))(context,
@@ -43,7 +42,7 @@ module.exports = {
         callback(context);
         return context;
     },
-    connect: function (callback) {
+    connect: function(callback) {
         const context = this.start();
 
         var config = require(__dirname + '/config/postgresConfig.json');
@@ -65,11 +64,11 @@ module.exports = {
 
         return context.sequelize
             .authenticate()
-            .then(function (err) {
+            .then(function(err) {
                 console.log('Connection has been established successfully.');
                 return callback(context);
             })
-            .catch(function (err) {
+            .catch(function(err) {
                 // Logs all application errors that happen after succesful db test OR error in connecting to DB
 
                 console.error(err.code);
@@ -77,7 +76,7 @@ module.exports = {
                 return process.exit(1);
             });
     },
-    getContext: function () {
+    getContext: function() {
         const context = this.start();
         var config = require(__dirname + '/config/postgresConfig.json');
 
