@@ -1,5 +1,5 @@
 {
-  "hostname": "127.0.0.1",
+  "hostname": "api-db",
   "port": "5432",
   "database": "postgres",
   "username": "postgres",
