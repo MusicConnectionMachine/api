@@ -1,4 +1,4 @@
-module.exports = function(context) {
+module.exports = function (context) {
     return context.sequelize.define('websites', {
         id: {
             type: context.Sequelize.UUID,
@@ -7,10 +7,10 @@ module.exports = function(context) {
         url: {
             type: context.Sequelize.TEXT
         },
-        download_link: {
+        blobl_url: {
             type: context.Sequelize.TEXT
         }
     }, {
-        freezeTableName: true
+        freezeTableName: true // Model tableName will be the same as the model name
     });
-}
+};
