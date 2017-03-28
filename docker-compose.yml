@@ -1,0 +1,17 @@
+version: "2"
+services:
+  api:
+    #image: musicconnectionmachine/api
+    build: .
+    ports:
+      - "10010:10010"
+    depends_on:
+      - api-db
+
+  api-db:
+    image: postgres
+    volumes:
+      - postgres-db-volume:/data/postgres
+
+volumes:
+  postgres-db-volume:
