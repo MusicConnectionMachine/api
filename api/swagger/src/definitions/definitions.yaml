@@ -215,3 +215,21 @@ Occurrence:
       items:
         type: integer
         format: int32
+
+# Group3&&Group4
+Relationship:
+  properties:
+    id:
+      type: integer
+      format: int32
+    relationship_occurrence:
+      type: integer
+      format:int32
+    relationship_quality:
+      type: float
+UpdateRelationship:
+    relationship_occurrence:
+      type: integer
+      format:int32
+    relationship_quality:
+      type: float
