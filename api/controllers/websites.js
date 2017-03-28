@@ -1,5 +1,9 @@
 'use strict';
 
+const path = require('path');
+var context = require(path.join(__dirname, '../../index.js')).getContext();
+var pages = context.component('dsap').module('websites');
+
 module.exports = {
     getMatchingSites: getMatchingSites,
     getWebsiteByID: getWebsiteByID,

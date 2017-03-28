@@ -1,14 +1,14 @@
 module.exports = function (context) {
-    return context.sequelize.define('pages', {
+    return context.sequelize.define('websites', {
         id: {
-            type: Sequelize.UUID,
+            type: context.Sequelize.UUID,
             primaryKey: true
         },
         url: {
-            type: Sequelize.TEXT
+            type: context.Sequelize.TEXT
         },
-        filelocation: {
-            type: Sequelize.TEXT
+        blobl_url: {
+            type: context.Sequelize.TEXT
         }
     }, {
         freezeTableName: true // Model tableName will be the same as the model name

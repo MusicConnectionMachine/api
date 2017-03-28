@@ -8,7 +8,7 @@ module.exports = function (context) {
         var releases = context.component('models').module('releases');
         var instruments = context.component('models').module('instruments');
         var entities = context.component('models').module('entities');
-        var pages = context.component('models').module('pages');
+        var websites = context.component('models').module('websites');
         var contains = context.component('models').module('contains');
 
 
@@ -29,7 +29,7 @@ module.exports = function (context) {
         instruments.belongsToMany(artists, {through:'ArtistComposedInstrument'});
 
         //define relations for contains
-        contains.belongsTo(pages);
+        contains.belongsTo(websites);
         contains.belongsTo(entities);
 
 
