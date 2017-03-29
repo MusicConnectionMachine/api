@@ -8,7 +8,7 @@ module.exports = function (context) {
         entity_id: {
             type: context.Sequelize.UUID
         },
-        subject: {
+        name: {
             type: context.Sequelize.TEXT
         }
     }, {
