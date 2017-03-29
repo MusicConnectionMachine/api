@@ -15,7 +15,7 @@ module.exports = function (context) {
             type: context.Sequelize.UUID
         },
         occurrence_id: {
-            type: context.Sequelize.INTEGER
+            type: context.Sequelize.UUID
         },
         confidence: {
             type: context.Sequelize.FLOAT
