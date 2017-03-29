@@ -2,13 +2,15 @@ module.exports = function (context) {
     return context.sequelize.define('relationshipDescriptions', {
         id: {
             type: context.Sequelize.UUID,
+            defaultValue: context.Sequelize.UUIDV4,
             primaryKey: true
         },
         relationship_name:{
             type:context.Sequelize.STRING
         },
         relationship_type:{
-            type:context.Sequelize.UUID
+            type:context.Sequelize.UUID,
+            defaultValue: context.Sequelize.UUIDV4
         },
         inverse:{
             type:context.Sequelize.BOOLEAN

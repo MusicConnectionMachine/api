@@ -2,10 +2,12 @@ module.exports = function (context) {
     return context.sequelize.define('relationshipOccurrence', {
         id: {
             type: context.Sequelize.UUID,
+            defaultValue: context.Sequelize.UUIDV4,
             primaryKey: true
         },
         page_id:{
-            type:context.Sequelize.UUID
+            type:context.Sequelize.UUID,
+            defaultValue: context.Sequelize.UUIDV4
         },
         sentence_start:{
             type:context.Sequelize.INTEGER
