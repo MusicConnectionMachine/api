@@ -20,8 +20,9 @@ var config = {
 require(path.join(__dirname, "index.js")).connect(function (context) {
 
 
-    context.sequelize.sync({force: true}).then(function () {
-        SwaggerExpress.create(config, function (err, swaggerExpress) {
+    SwaggerExpress.create(config, function (err, swaggerExpress) {
+        context.sequelize.sync({force: true}).then(function () {
+
             if (err) {
                 throw err;
             }
