@@ -43,24 +43,7 @@ module.exports = {
         return context;
     },
     connect: function(callback) {
-        const context = this.start();
-
-        var config = require(__dirname + '/config/postgresConfig.json');
-        context.config = config;
-
-
-        //initalize Sequelize and create tables
-        context.sequelize = new context.Sequelize(config.database, config.username, config.password, {
-            host: config.hostname,
-            dialect: 'postgres',
-            port: config.port,
-            pool: {
-                max: 5,
-                min: 0,
-                idle: 10000
-            }
-        });
-
+        const context = this.getContext();
 
         return context.sequelize
             .authenticate()
@@ -81,6 +64,10 @@ module.exports = {
         var config = require(__dirname + '/config/postgresConfig.json');
 
         context.config = config;
+        context.config.database = process.env.PGDATABASE || config.database;
+        context.config.hostname = process.env.PGHOST || config.host;
+        context.config.username = process.env.PGUSER || config.username;
+        context.config.password = process.env.PGPASSWORD || config.password;
 
         //initalize Sequelize and create tables
         context.sequelize = new context.Sequelize(config.database, config.username, config.password, {
