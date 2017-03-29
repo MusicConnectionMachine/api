@@ -10,6 +10,7 @@ module.exports = {
         const path = require('path');
         const Sequelize = require('sequelize');
 
+        console.log('Initializing context');
         // Initialize the context
         context = {
             fs: fs,
@@ -43,7 +44,7 @@ module.exports = {
         return context;
     },
     connect: function(callback) {
-        const context = this.getContext();
+        const context = this.createContext();
 
         return context.sequelize
             .authenticate()
@@ -59,8 +60,8 @@ module.exports = {
                 return process.exit(1);
             });
     },
-    getContext: function() {
-        const context = this.start();
+    createContext: function() {
+        context = this.start();
         var config = require(__dirname + '/config/postgresConfig.json');
 
         context.config = config;
@@ -82,5 +83,11 @@ module.exports = {
         });
 
         return context;
+    },
+    getContext: function() {
+        if(context) {
+            return context;
+        }
+        console.log('Failed to retrieve context: context doesn\'t exist.');
     }
 }
