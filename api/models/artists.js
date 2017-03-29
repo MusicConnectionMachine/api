@@ -38,6 +38,12 @@ module.exports = function (context) {
         source_link: {
             type: context.Sequelize.TEXT
         }
+        wiki_link: {
+            type: context.Sequelize.TEXT
+        }
+        wiki_pageid: {
+            type: context.Sequelize.TEXT
+        }
     }, {
         freezeTableName: true // Model tableName will be the same as the model name
     });
