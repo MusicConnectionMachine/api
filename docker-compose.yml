@@ -7,9 +7,15 @@ services:
       - "10010:10010"
     depends_on:
       - api-db
+    environment:
+      - PGHOST=api-db
+      - PGDATABASE=postgres
+      - PGUSER=postgres
 
   api-db:
     image: postgres
+    ports:
+     - "5432:5432"
     volumes:
       - postgres-db-volume:/data/postgres
 
