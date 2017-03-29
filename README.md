@@ -1,4 +1,4 @@
-# API
+# API [![Gitter](https://badges.gitter.im/MusicConnectionMachine/api.svg)](https://gitter.im/MusicConnectionMachine/api?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 In this project, the API to interface the Postgres database is exposed.
 
 ## Run project
