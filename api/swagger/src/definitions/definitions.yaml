@@ -215,3 +215,51 @@ Occurrence:
       items:
         type: integer
         format: int32
+
+#Group3&&4
+Relationship:
+  properties:
+    id:
+      type: integer
+      format: int64
+    subject_id:
+      type: integer
+      format: int64
+    object_id:
+      type: integer
+      format: int64
+    type_id:
+      type: integer
+      format: int64
+    occur_id:
+      type: integer
+      format: int64
+    confidence:
+      type: number
+      format: float
+    relation:
+      type: string
+
+UpdateRelationship:
+  properties:
+    subject_id:
+      type: integer
+      format: int64
+    object_id:
+      type: integer
+      format: int64
+    type_id:
+      type: integer
+      format: int64
+    occur_id:
+      type: integer
+      format: int64
+    confidence:
+      type: number
+      format: float
+    relation:
+      type: string
+
+
+
+
