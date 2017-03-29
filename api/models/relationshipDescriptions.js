@@ -10,7 +10,6 @@ module.exports = function (context) {
         },
         relationship_type:{
             type:context.Sequelize.UUID,
-            defaultValue: context.Sequelize.UUIDV4
         },
         inverse:{
             type:context.Sequelize.BOOLEAN
