@@ -43,3 +43,11 @@
 /download/{filename}:
   $ref: ./download/download-filename.yaml
 
+# Group 3&4
+
+/relationships:
+  $ref: ./relationships/relationships.yaml
+
+/relationships/{id}:
+  $ref: ./relationships/relationships-id.yaml
+
