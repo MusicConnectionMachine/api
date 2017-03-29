@@ -88,6 +88,6 @@ module.exports = {
         if(context) {
             return context;
         }
-        console.log('Failed to retrieve context: context doesn\' exist.');
+        console.log('Failed to retrieve context: context doesn\'t exist.');
     }
 }
