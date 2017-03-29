@@ -10,6 +10,7 @@ module.exports = {
         const path = require('path');
         const Sequelize = require('sequelize');
 
+        console.log('start: Initializing context');
         // Initialize the context
         context = {
             fs: fs,
@@ -43,7 +44,9 @@ module.exports = {
         return context;
     },
     connect: function(callback) {
+        console.log('Connect called');
         const context = this.getContext();
+        console.log('called getContext, now connecting do db');
 
         return context.sequelize
             .authenticate()
@@ -60,7 +63,12 @@ module.exports = {
             });
     },
     getContext: function() {
-        const context = this.start();
+        if(context) {
+            console.log('getContext: Returning cached context');
+            return context;
+        }
+        console.log('getContext: creating new context');
+        context = this.start();
         var config = require(__dirname + '/config/postgresConfig.json');
 
         context.config = config;
