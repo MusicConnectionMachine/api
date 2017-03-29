@@ -9,7 +9,7 @@ module.exports = function (context) {
             type:context.Sequelize.STRING
         },
         relationship_type:{
-            type:context.Sequelize.UUID,
+            type:context.Sequelize.UUID
         },
         inverse:{
             type:context.Sequelize.BOOLEAN
