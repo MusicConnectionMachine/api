@@ -1,20 +1,19 @@
 module.exports = function (context) {
-    return context.sequelize.define('relationshipDescriptions', {
+    return context.sequelize.define('relationshipOccurrence', {
         id: {
             type: context.Sequelize.UUID,
             primaryKey: true
         },
-        relationship_name:{
-            type:context.Sequelize.STRING
-        },
-        relationship_type:{
+        page_id:{
             type:context.Sequelize.UUID
         },
-        inverse:{
-            type:context.Sequelize.BOOLEAN
+        sentence_start:{
+            type:context.Sequelize.INTEGER
+        },
+        sentence_stop:{
+            type:context.Sequelize.INTEGER
         }
     }, {
         freezeTableName: true // Model tableName will be the same as the model name
     });
 };
-
