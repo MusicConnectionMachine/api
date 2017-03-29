@@ -5,6 +5,7 @@ module.exports = function (context) {
         },
         id: {
             type: context.Sequelize.UUID,
+            defaultValue: context.Sequelize.UUIDV4,
             primaryKey: true
         },
         artist_type: {

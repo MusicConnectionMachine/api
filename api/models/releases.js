@@ -2,6 +2,7 @@ module.exports = function (context) {
     return context.sequelize.define('releases', {
         id: {
             type: context.Sequelize.UUID,
+            defaultValue: context.Sequelize.UUIDV4,
             primaryKey: true
         },
         title: {
