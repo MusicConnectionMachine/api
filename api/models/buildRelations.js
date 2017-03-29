@@ -10,9 +10,9 @@ module.exports = function (context) {
         var entities = context.component('models').module('entities');
         var websites = context.component('models').module('websites');
         var contains = context.component('models').module('contains');
-        var relationships=context.component('models').module('relationships');
-        var relationshipTypes=context.component('models').module('relationshipTypes');
-        var relationshipDescriptions=context.component('models').module('relationshipDescriptions');
+        var relationships = context.component('models').module('relationships');
+        var relationshipTypes = context.component('models').module('relationshipTypes');
+        var relationshipDescriptions = context.component('models').module('relationshipDescriptions');
 
         //define relations for artist
         artists.belongsToMany(works, {through:'ArtistComposedWork'});
