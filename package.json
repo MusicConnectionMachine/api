@@ -22,9 +22,12 @@
   },
   "scripts": {
     "postinstall": "npm install -g multi-file-swagger",
-    "start": "cd ./api/swagger/src/ && multi-file-swagger ./swagger.yaml > ../swagger.json && cd ../../../ && node app.js",
+    "swagger-compile": "cd ./api/swagger/src/ && multi-file-swagger ./swagger.yaml > ../swagger.json && cd ../../../",
+    "start": "node app.js",
+    "prestart": "npm run swagger-compile",
+    "pretest": "npm run swagger-compile",
     "test": "npm-run-all test:swagger lint",
-    "test:swagger": "swagger_swagger_fileName=api/swagger/src/swagger.yaml swagger project test",
+    "test:swagger": "swagger_swagger_fileName=api/swagger/swagger.json swagger project test",
     "lint": "./node_modules/.bin/eslint ."
   }
 }
