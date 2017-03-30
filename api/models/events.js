@@ -9,10 +9,10 @@ module.exports = function (context) {
             type:context.Sequelize.STRING
         },
         end:{
-            type:context.Sequelize.UUID
+            type:context.Sequelize.STRING
         },
         description:{
-            type:context.Sequelize.BOOLEAN
+            type:context.Sequelize.TEXT
         }
     }, {
         freezeTableName: true // Model tableName will be the same as the model name
