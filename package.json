@@ -24,7 +24,7 @@
     "postinstall": "npm install -g multi-file-swagger",
     "start": "cd ./api/swagger/src/ && multi-file-swagger ./swagger.yaml > ../swagger.json && cd ../../../ && node app.js",
     "test": "npm-run-all test:swagger lint",
-    "test:swagger": "swagger project test",
+    "test:swagger": "swagger_swagger_fileName=api/swagger/src/swagger.yaml swagger project test",
     "lint": "./node_modules/.bin/eslint ."
   }
 }
