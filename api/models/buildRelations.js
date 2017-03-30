@@ -13,6 +13,8 @@ module.exports = function (context) {
         var relationships = context.component('models').module('relationships');
         var relationshipTypes = context.component('models').module('relationshipTypes');
         var relationshipDescriptions = context.component('models').module('relationshipDescriptions');
+        var relationshipEntities = context.component('models').module('relationshipEntities');
+        var relationshipOccurrences = context.component('models').module('relationshipOccurrences');
 
         //define relations for artist
         artists.belongsToMany(works, {through:'ArtistComposedWork'});
@@ -34,10 +36,23 @@ module.exports = function (context) {
         contains.belongsTo(websites);
         contains.belongsTo(entities);
 
-        //define relations for relationships and relationshipTypes
-        relationships.belongsTo(entities);
-        relationships.belongsTo(websites);
-        relationships.belongsTo(relationshipTypes);
+        //define relations for relationships
+        relationships.belongsTo(relationshipDescriptions);
+        relationshipDescriptions.belongsTo(relationshipTypes);
+        relationshipDescriptions.hasMany(relationships);
         relationshipTypes.hasMany(relationshipDescriptions);
+
+        relationships.belongsTo(relationshipOccurrences);
+        relationshipOccurrences.belongsTo(websites);
+        relationshipOccurrences.hasMany(relationships);
+        websites.hasMany(relationshipOccurrences);
+
+        relationships.belongsTo(relationshipEntities, {foreignKey: 'subjectId', as: 'Subject'});
+        relationships.belongsTo(relationshipEntities, {foreignKey: 'objectId', as: 'Object'});
+        relationshipEntities.hasMany(relationships, {foreignKey: 'subjectId'});
+        relationshipEntities.hasMany(relationships, {foreignKey: 'objectId'});
+
+        relationshipEntities.belongsTo(entities);
+        entities.hasMany(relationshipEntities);
     }
 };
