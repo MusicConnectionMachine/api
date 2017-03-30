@@ -4,10 +4,6 @@ var SwaggerExpress = require('swagger-express-mw');
 var app = require('express')();
 module.exports = app; // for testing
 
-//packages for Sequelize and PostgreSQL
-var Sequelize = require('sequelize');
-var pg = require('pg');
-var pg_hstore = require('pg-hstore');
 const path= require('path');
 
 
@@ -17,7 +13,7 @@ var config = {
 };
 
 
-require(path.join(__dirname, "index.js")).connect(function (context) {
+require(path.join('./index.js')).connect(function (context) {
 
 
     SwaggerExpress.create(config, function (err, swaggerExpress) {

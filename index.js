@@ -70,33 +70,33 @@ module.exports = {
         context.config = databaseParams;
 
         var configDB = {
-           database: databaseParams.collection, //env var: PGDATABASE
-           host: databaseParams.uri, // Server hosting the postgres database
-           port: databaseParams.port, //env var: PGPORT
-           max: 10, // max number of clients in the pool
-           min: 0,
-           idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
+            database: databaseParams.collection, //env var: PGDATABASE
+            host: databaseParams.uri, // Server hosting the postgres database
+            port: databaseParams.port, //env var: PGPORT
+            max: 10, // max number of clients in the pool
+            min: 0,
+            idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
 
-       };
-       //prepare connection string
-       var dbConnection = "postgres://";
-       if(databaseParams.username  && databaseParams.username.length > 0){
-          dbConnection += databaseParams.username;
-          configDB.user = databaseParams.username;
+        };
+        //prepare connection string
+        var dbConnection = "postgres://";
+        if(databaseParams.username  && databaseParams.username.length > 0){
+            dbConnection += databaseParams.username;
+            configDB.user = databaseParams.username;
         }
         if (databaseParams.username  && databaseParams.username.length > 0 && databaseParams.password && databaseParams.password.length > 0) {
-          dbConnection += ":" + databaseParams.password;
-          configDB.password = databaseParams.password;
+            dbConnection += ":" + databaseParams.password;
+            configDB.password = databaseParams.password;
         }
         if (databaseParams.username  && databaseParams.username.length > 0) {
-          dbConnection += "@";
+            dbConnection += "@";
         }
         dbConnection += databaseParams.uri;
         if(databaseParams.port !== undefined && databaseParams.port !== ""){
-          dbConnection += ":" + databaseParams.port;
+            dbConnection += ":" + databaseParams.port;
         }
         if(databaseParams.collection !== undefined && databaseParams.collection !== ""){
-          dbConnection += "/" + databaseParams.collection;
+            dbConnection += "/" + databaseParams.collection;
         }
         context.pgConnectionString = dbConnection;
         console.log("CONNECTING TO " + dbConnection);

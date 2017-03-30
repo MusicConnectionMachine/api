@@ -9,17 +9,17 @@ module.exports = function (context) {
                 ]
             });
         },
-        findReleasesById: function (release_id) {
+        findReleasesById: function (releaseId) {
             return releases.findOne({
                 where: {
-                    id: release_id
+                    id: releaseId
                 },
                 attributes: ['title', 'id', 'format', 'date', 'country', 'label'
                 ]
             });
         },
-        addRelease: function (release_obj) {
-            releases.create(release_obj).then(function () {
+        addRelease: function (releaseObject) {
+            releases.create(releaseObject).then(function () {
                 return releases.findAll({
                     attributes: ['title', 'id', 'format', 'date', 'country', 'label'
                     ]
@@ -27,7 +27,7 @@ module.exports = function (context) {
             });
         },
         updateRelease: function (id, releaseObject) {
-            releases.update(release_obj).then(function () {
+            releases.update(releaseObject).then(function () {
                 return releases.findAll({
                     attributes: ['title', 'id', 'format', 'date', 'country', 'label'
                     ]
