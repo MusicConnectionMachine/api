@@ -51,3 +51,9 @@
 /relationships/{id}:
   $ref: ./relationships/relationships-id.yaml
 
+/events:
+  $ref: ./events/events.yaml
+
+/events/{id}:
+  $ref: ./events/events-id.yaml
+

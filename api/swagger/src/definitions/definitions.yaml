@@ -259,7 +259,38 @@ UpdateRelationship:
       format: float
     relation:
       type: string
+Event:
+  properties:
+    id:
+      type: integer
+      format: int64
+    entity_id:
+      type: integer
+      format: int64
+    page_id:
+      type: integer
+      format: int64
+    start:
+      type: string
+    end:
+      type: string
+    description:
+      type: string
 
+UpdateEvent:
+  properties:
+    entity_id:
+      type: integer
+      format: int64
+    page_id:
+      type: integer
+      format: int64
+    start:
+      type: string
+    end:
+      type: string
+    description:
+      type: string
 
 
 
