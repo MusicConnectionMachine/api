@@ -5,12 +5,6 @@ module.exports = function (context) {
             defaultValue: context.Sequelize.UUIDV4,
             primaryKey: true
         },
-        entity_id:{
-            type:context.Sequelize.UUID
-        },
-        page_id:{
-            type:context.Sequelize.UUID
-        },
         start:{
             type:context.Sequelize.STRING
         },
