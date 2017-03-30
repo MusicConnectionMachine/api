@@ -5,9 +5,6 @@ module.exports = function (context) {
             defaultValue: context.Sequelize.UUIDV4,
             primaryKey: true
         },
-        page_id:{
-            type:context.Sequelize.UUID
-        },
         sentence_start:{
             type:context.Sequelize.INTEGER
         },

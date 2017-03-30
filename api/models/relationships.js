@@ -5,18 +5,6 @@ module.exports = function (context) {
             defaultValue: context.Sequelize.UUIDV4,
             primaryKey: true
         },
-        subject_id: {
-            type: context.Sequelize.UUID
-        },
-        object_id: {
-            type: context.Sequelize.UUID
-        },
-        type_id: {
-            type: context.Sequelize.UUID
-        },
-        occurrence_id: {
-            type: context.Sequelize.UUID
-        },
         confidence: {
             type: context.Sequelize.FLOAT
         },
