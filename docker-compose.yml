@@ -8,9 +8,9 @@ services:
     depends_on:
       - api-db
     environment:
-      - PGHOST=api-db
-      - PGDATABASE=postgres
-      - PGUSER=postgres
+      - databaseuri=api-db
+      - databaseuser=postgres
+      - databasepassword=postgres
 
   api-db:
     image: postgres
