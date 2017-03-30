@@ -1,7 +1,7 @@
 'use strict';
 module.exports = function(context) {
-var works = context.component('models').module('works');
-return {
+    var works = context.component('models').module('works');
+    return {
         findAllWorks: function() {
             return works.findAll({
                 attributes: ['title', 'id', 'compositionyear']

@@ -30,7 +30,7 @@ module.exports = function(context) {
             });
         },
         updateWebsite: function(website_obj) {
-            websites.update(website__obj).then(function() {
+            websites.update(website_obj).then(function() {
                 return websites.findAll({
                     attributes: [
                         'id', 'url', 'blob_url'

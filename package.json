@@ -15,12 +15,19 @@
     "swagger-express-mw": "^0.1.0"
   },
   "devDependencies": {
+    "eslint": "^3.18.0",
+    "npm-run-all": "^4.0.2",
     "should": "^7.1.0",
     "supertest": "^1.0.0"
   },
   "scripts": {
     "postinstall": "npm install -g multi-file-swagger",
-    "start": "cd ./api/swagger/src/ && multi-file-swagger ./swagger.yaml > ../swagger.json && cd ../../../ && node app.js",
-    "test": "swagger project test"
+    "swagger-compile": "cd ./api/swagger/src/ && multi-file-swagger ./swagger.yaml > ../swagger.json && cd ../../../",
+    "start": "node app.js",
+    "prestart": "npm run swagger-compile",
+    "pretest": "npm run swagger-compile",
+    "test": "npm-run-all test:swagger lint",
+    "test:swagger": "swagger_swagger_fileName=api/swagger/swagger.json swagger project test",
+    "lint": "./node_modules/.bin/eslint ."
   }
 }
