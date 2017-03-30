@@ -4,8 +4,6 @@ var SwaggerExpress = require('swagger-express-mw');
 var app = require('express')();
 module.exports = app; // for testing
 
-const path= require('path');
-
 
 var config = {
     appRoot: __dirname, // required config
@@ -13,7 +11,7 @@ var config = {
 };
 
 
-require(path.join('./index.js')).connect(function (context) {
+require('./index.js').connect(function (context) {
 
 
     SwaggerExpress.create(config, function (err, swaggerExpress) {
