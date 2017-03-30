@@ -1,0 +1,44 @@
+x-swagger-router-controller: events
+get:
+  description: Retruns list of all events
+  operationId: getAllEvents
+  responses:
+    "200":
+      description: Success
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/Event'
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"
+
+post:
+  description: Add a new Event to DB
+  operationId: addEvent
+  parameters:
+    - name: apiKey
+      in: query
+      description: API key
+      required: true
+      type: string
+    - name: body
+      in: body
+      description: Event data
+      required: true
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/UpdateEvent'
+  responses:
+    "200":
+      description: Success
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/Event'
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"
