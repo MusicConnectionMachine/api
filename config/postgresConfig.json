@@ -1,0 +1,7 @@
+{
+  "hostname": "api-db",
+  "port": "5432",
+  "database": "postgres",
+  "username": "postgres",
+  "password": "1234"
+}
