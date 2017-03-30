@@ -6,7 +6,7 @@ module.exports = function(context) {
         findAllWebsites: function() {
             return websites.findAll({
                 attributes: [
-                    'id', 'url', 'download_link'
+                    'id', 'url', 'blob_url'
                 ]
             });
         },
@@ -16,7 +16,7 @@ module.exports = function(context) {
                     id: website_id
                 },
                 attributes: [
-                    'id', 'url', 'download_link'
+                    'id', 'url', 'blob_url'
                 ]
             });
         },
@@ -24,7 +24,7 @@ module.exports = function(context) {
             websites.create(website_obj).then(function() {
                 return websites.findAll({
                     attributes: [
-                        'id', 'url', 'download_link'
+                        'id', 'url', 'blob_url'
                     ]
                 });
             });
@@ -33,7 +33,7 @@ module.exports = function(context) {
             websites.update(website__obj).then(function() {
                 return websites.findAll({
                     attributes: [
-                        'id', 'url', 'download_link'
+                        'id', 'url', 'blob_url'
                     ]
                 });
             });
@@ -43,7 +43,7 @@ module.exports = function(context) {
                 obj.destroy().then(function() {
                     return websites.findAll({
                         attributes: [
-                            'id', 'url', 'download_link'
+                            'id', 'url', 'blob_url'
                         ]
                     });
                 });

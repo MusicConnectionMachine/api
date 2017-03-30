@@ -2,12 +2,13 @@ module.exports = function (context) {
     return context.sequelize.define('websites', {
         id: {
             type: context.Sequelize.UUID,
+            defaultValue: context.Sequelize.UUIDV4,
             primaryKey: true
         },
         url: {
             type: context.Sequelize.TEXT
         },
-        blobl_url: {
+        blob_url: {
             type: context.Sequelize.TEXT
         }
     }, {
