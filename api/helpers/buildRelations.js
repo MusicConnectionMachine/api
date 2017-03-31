@@ -41,10 +41,10 @@ module.exports = function (context) {
         works.belongsTo(entities);
         releases.belongsTo(entities);
         instruments.belongsTo(entities);
-        entities.belongsTo(artists, {constraints: false});
-        entities.belongsTo(works, {constraints: false});
-        entities.belongsTo(releases, {constraints: false});
-        entities.belongsTo(instruments, {constraints: false});
+        entities.hasOne(artists);
+        entities.hasOne(works);
+        entities.hasOne(releases);
+        entities.hasOne(instruments);
 
         //define relations for relationships
         relationships.belongsTo(relationshipDescriptions);
