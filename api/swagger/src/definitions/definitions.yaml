@@ -67,12 +67,12 @@ UpdateArtist:
       type: string
     dateOfBirth :
       type: string
-      format: date
+      format: yyyy-mm-dd
     placeOfBirth :
       type : string
     dateOfDeath :
       type: string
-      format: date
+      format: yyyy-mm-dd
     placeOfDeath :
       type : string
     nationality:
