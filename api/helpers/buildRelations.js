@@ -36,6 +36,16 @@ module.exports = function (context) {
         contains.belongsTo(websites);
         contains.belongsTo(entities);
 
+        //define 1:1 relation between entities and artists/releases/works
+        artists.belongsTo(entities);
+        works.belongsTo(entities);
+        releases.belongsTo(entities);
+        instruments.belongsTo(entities);
+        entities.belongsTo(artists, {constraints: false});
+        entities.belongsTo(works, {constraints: false});
+        entities.belongsTo(releases, {constraints: false});
+        entities.belongsTo(instruments, {constraints: false});
+
         //define relations for relationships
         relationships.belongsTo(relationshipDescriptions);
         relationshipDescriptions.belongsTo(relationshipTypes);
