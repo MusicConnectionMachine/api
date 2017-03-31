@@ -1,6 +1,6 @@
 'use strict';
 
-var context = require('../../index.js').getContext();
+var context = require('../../database.js').getContext();
 var pages = context.component('dsap').module('websites');
 
 module.exports = {
