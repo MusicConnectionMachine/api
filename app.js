@@ -11,7 +11,7 @@ var config = {
 };
 
 
-require('./database.js').connect(function (context) {
+require('./database.js').connect(null,function (context) {
 
     SwaggerExpress.create(config, function (err, swaggerExpress) {
         context.sequelize.sync({force: true}).then(function () {

@@ -43,8 +43,8 @@ module.exports = {
         callback(context);
         return context;
     },
-    connect: function(callback) {
-        const context = this.createContext();
+    connect: function(postgresCS,callback) {
+        const context = this.createContext(postgresCS);
 
         this.loadModels(() => {
             return context.sequelize
@@ -75,58 +75,43 @@ module.exports = {
             callback();
         });
     },
-    createContext: function() {
+    createContext: function(postgresCS) {
         context = this.start();
 
-        var dbconfig = require(__dirname + "/config.js.template");
+        var dbConfig = require('./config.js.template');
 
         //Create the DB connection string
-        var databaseParams = dbconfig.database;
+        var databaseParams = dbConfig.database;
         context.config = databaseParams;
 
         var configDB = {
             database: databaseParams.collection, //env var: PGDATABASE
-            host: databaseParams.uri, // Server hosting the postgres database
+            username: databaseParams.username,
+            password: databaseParams.password,
+            host: databaseParams.host, // Server hosting the postgres database
             port: databaseParams.port, //env var: PGPORT
             max: 10, // max number of clients in the pool
             min: 0,
             idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
 
         };
-        //prepare connection string
-        var dbConnection = "postgres://";
-        if(databaseParams.username  && databaseParams.username.length > 0){
-            dbConnection += databaseParams.username;
-            configDB.user = databaseParams.username;
-        }
-        if (databaseParams.username  && databaseParams.username.length > 0 && databaseParams.password && databaseParams.password.length > 0) {
-            dbConnection += ":" + databaseParams.password;
-            configDB.password = databaseParams.password;
-        }
-        if (databaseParams.username  && databaseParams.username.length > 0) {
-            dbConnection += "@";
-        }
-        dbConnection += databaseParams.uri;
-        if(databaseParams.port !== undefined && databaseParams.port !== ""){
-            dbConnection += ":" + databaseParams.port;
-        }
-        if(databaseParams.collection !== undefined && databaseParams.collection !== ""){
-            dbConnection += "/" + databaseParams.collection;
-        }
-        context.pgConnectionString = dbConnection;
-        console.log("CONNECTING TO " + dbConnection);
 
-        //initalize Sequelize and create tables
-        context.sequelize = new context.Sequelize(dbConnection, {
-            host: configDB.hostname,
-            dialect: 'postgres',
-            port: configDB.port,
-            pool: {
-                max: configDB.max,
-                min: configDB.min,
-                idle: configDB.idleTimeoutMillis
-            }
-        });
+        const databaseURI = postgresCS||process.env.databaseuri;
+
+        if (databaseURI) {
+            context.sequelize = new context.Sequelize(databaseURI, dbConfig);
+        } else {
+            context.sequelize = new context.Sequelize(configDB.database, configDB.username, configDB.password, {
+                host: configDB.hostname,
+                dialect: 'postgres',
+                port: configDB.port,
+                pool: {
+                    max: configDB.max,
+                    min: configDB.min,
+                    idle: configDB.idleTimeoutMillis
+                }
+            });
+        }
 
         return context;
     },

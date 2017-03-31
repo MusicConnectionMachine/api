@@ -3,7 +3,7 @@ module.exports = {
     "username": process.env.databaseuser || "postgres",
     "password": process.env.databasepassword || "1234",
     "port": process.env.databaseport || "5432",
-    "uri": process.env.databaseuri || "127.0.0.1",
+    "host": process.env.databasehost || "127.0.0.1",
     "collection": process.env.databasecollection || "postgres",
   }
 };
