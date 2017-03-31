@@ -11,9 +11,6 @@ module.exports = function (context) {
         artist_type: {
             type: context.Sequelize.ENUM('composer', 'musician')
         },
-        picture: {
-            type: context.Sequelize.BLOB
-        },
         dateOfBirth: {
             type: context.Sequelize.DATEONLY
         },
