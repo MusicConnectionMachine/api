@@ -46,19 +46,34 @@ module.exports = {
     connect: function(callback) {
         const context = this.createContext();
 
-        return context.sequelize
-            .authenticate()
-            .then(function(err) {
-                console.log('Connection has been established successfully.');
-                return callback(context);
-            })
-            .catch(function(err) {
-                // Logs all application errors that happen after succesful db test OR error in connecting to DB
+        this.loadModels(() => {
+            return context.sequelize
+                .authenticate()
+                .then(function (err) {
+                    console.log('Connection has been established successfully.');
+                    return callback(context);
+                })
+                .catch(function (err) {
+                    // Logs all application errors that happen after succesful db test OR error in connecting to DB
 
-                console.error(err.code);
-                console.error(err);
-                return process.exit(1);
+                    console.error(err.code);
+                    console.error(err);
+                    return process.exit(1);
+                });
+        });
+    },
+    loadModels: function(callback) {
+        context.fs.readdir(context.path.join(__dirname, 'api', 'models'), (err, files) => {
+            //Load ALL modules.
+            //Don't get confused by weird logging order! console.log is async and will mix up the actual loading order.
+            files.forEach(file => {
+                context.component('models').module(file.replace('.js', ''));
             });
+
+            context.component('helpers').module('buildRelations')();
+
+            callback();
+        });
     },
     createContext: function() {
         context = this.start();

@@ -13,34 +13,24 @@ var config = {
 
 require('./index.js').connect(function (context) {
 
-    context.fs.readdir(context.path.join(__dirname, 'api', 'models'), (err, files) => {
-        //Load ALL modules.
-        //Don't get confused by weird logging order! console.log is async and will mix up the actual loading order.
-        files.forEach(file => {
-            context.component('models').module(file.replace('.js',''));
-        });
+    SwaggerExpress.create(config, function (err, swaggerExpress) {
+        context.sequelize.sync({force: true}).then(function () {
 
-        context.component('helpers').module('buildRelations')();
+            if (err) {
+                throw err;
+            }
 
-        SwaggerExpress.create(config, function (err, swaggerExpress) {
-            context.sequelize.sync({force: true}).then(function () {
+            // install middleware
+            swaggerExpress.register(app);
 
-                if (err) {
-                    throw err;
-                }
+            var port = process.env.PORT || 10010;
+            app.listen(port);
 
-                // install middleware
-                swaggerExpress.register(app);
+            console.log('Server running at http://127.0.0.1:' + port);
 
-                var port = process.env.PORT || 10010;
-                app.listen(port);
+        })
 
-                console.log('Server running at http://127.0.0.1:' + port);
-
-            });
-        });
     });
-
 
 });
 
