@@ -1,6 +1,6 @@
 'use strict';
-const path = require('path');
-var context = require(path.join(__dirname, '../../index.js')).getContext();
+
+var context = require('../../index.js').getContext();
 var instruments = context.component('dsap').module('instruments');
 
 module.exports = {
