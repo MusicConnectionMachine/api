@@ -87,6 +87,10 @@ UpdateArtist:
         type: string
     source_link:
       type : string
+    wiki_link:
+      type : string
+    wiki_pageid:
+      type : string
 
 Instrument:
   properties:
