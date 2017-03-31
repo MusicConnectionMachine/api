@@ -43,8 +43,8 @@ module.exports = {
         callback(context);
         return context;
     },
-    connect: function(callback) {
-        const context = this.createContext();
+    connect: function(postgresCS,callback) {
+        const context = this.createContext(postgresCS);
 
         this.loadModels(() => {
             return context.sequelize
@@ -75,7 +75,7 @@ module.exports = {
             callback();
         });
     },
-    createContext: function() {
+    createContext: function(postgresCS) {
         context = this.start();
 
         var dbConfig = require('./config.js.template');
@@ -96,10 +96,10 @@ module.exports = {
 
         };
 
-        const databaseURI = process.env.databaseuri;
+        const databaseURI = postgresCS||process.env.databaseuri;
 
         if (databaseURI) {
-            context.sequelize = new context.Sequelize(process.env.DATABASE_URL, dbConfig);
+            context.sequelize = new context.Sequelize(databaseURI, dbConfig);
         } else {
             context.sequelize = new context.Sequelize(configDB.database, configDB.username, configDB.password, {
                 host: configDB.hostname,
