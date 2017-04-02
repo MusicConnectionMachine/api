@@ -102,7 +102,7 @@ module.exports = {
             context.sequelize = new context.Sequelize(databaseURI, dbConfig);
         } else {
             context.sequelize = new context.Sequelize(configDB.database, configDB.username, configDB.password, {
-                host: configDB.hostname,
+                host: configDB.host,
                 dialect: 'postgres',
                 port: configDB.port,
                 pool: {
