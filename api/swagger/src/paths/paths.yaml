@@ -19,7 +19,7 @@
   $ref: ./releases/releases.yaml
 
 /releases/{id}:
-    $ref: ./releases/releases-id.yaml
+  $ref: ./releases/releases-id.yaml
 
 /works:
   $ref: ./works/works.yaml
@@ -57,3 +57,13 @@
 /events/{id}:
   $ref: ./events/events-id.yaml
 
+# Group 5
+
+/autosuggest:
+  $ref: ./autosuggest/autosuggest.yaml
+
+/search/entities:
+  $ref: ./search/entities.yaml
+
+/search/relations:
+  $ref: ./search/relations.yaml

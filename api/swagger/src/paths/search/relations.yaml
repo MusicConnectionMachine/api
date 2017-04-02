@@ -1,0 +1,24 @@
+x-swagger-router-controller: search
+get:
+  description: Returns relations matching the search criteria
+  operationId: searchRelations
+  parameters:
+    - name: subjectName
+      in: query
+      description: The name of the subject
+      required: true
+      type: string
+    - name: objectName
+      in: query
+      description: The name of the object
+      required: true
+      type: string
+  responses:
+    "200":
+      description: Success
+      schema:
+        $ref: '#/definitions/FlatRelation'
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"

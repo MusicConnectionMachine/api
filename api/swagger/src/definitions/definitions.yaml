@@ -292,5 +292,42 @@ UpdateEvent:
     description:
       type: string
 
+#Group5
+EntityResults:
+  properties:
+    artists:
+      type: array
+      items:
+        $ref: '#/definitions/Artist'
+    instruments:
+      type: array
+      items:
+        $ref: '#/definitions/Instrument'
+    releases:
+      type: array
+      items:
+        $ref: '#/definitions/Release'
 
+SearchSuggestion:
+  properties:
+    entities:
+      $ref: '#/definitions/EntityResults'
+    relationships:
+      type: array
+      items:
+        $ref: '#/definitions/Relationship'
 
+FlatRelation:
+  properties:
+    id:
+      type: integer
+      format: int64
+    name:
+      type: string
+    subject_name:
+      type: string
+    object_name:
+      type: string
+    confidence:
+      type: number
+      format: float

@@ -1,0 +1,24 @@
+x-swagger-router-controller: autosuggest
+get:
+  description: Returns object with search suggestions
+  operationId: getSearchSuggestions
+  parameters:
+    - name: subjectName
+      in: query
+      description: The entity of interest
+      required: true
+      type: string
+    - name: searchString
+      in: query
+      description: The current search input
+      required: true
+      type: string
+  responses:
+    "200":
+      description: Success
+      schema:
+        $ref: '#/definitions/SearchSuggestion'
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"
