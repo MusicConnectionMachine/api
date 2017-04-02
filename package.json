@@ -12,7 +12,9 @@
     "pg": "6.1.4",
     "pg-hstore": "2.3.2",
     "sequelize": "3.30.2",
-    "swagger-express-mw": "^0.1.0"
+    "swagger-express-mw": "^0.1.0",
+    "mocha": "^3.2.0",
+    "chai": "^3.5.0"
   },
   "devDependencies": {
     "eslint": "^3.18.0",
@@ -27,6 +29,7 @@
     "prestart": "npm run swagger-compile",
     "pretest": "npm run swagger-compile",
     "test": "npm-run-all test:swagger lint",
+    "test:mocha": "mocha \"mocha\"",
     "test:swagger": "swagger_swagger_fileName=api/swagger/swagger.json swagger project test",
     "lint": "./node_modules/.bin/eslint ."
   }

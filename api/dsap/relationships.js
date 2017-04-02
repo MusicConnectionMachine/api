@@ -6,7 +6,7 @@ module.exports = function(context) {
         findAllRelationships: function() {
             return relationships.findAll({
                 attributes: [
-                    'id', 'relationship_occurrence', 'relationship_quality'
+                    'id'
                 ]
             });
         },
@@ -16,7 +16,7 @@ module.exports = function(context) {
                     id: relationship_id
                 },
                 attributes: [
-                    'id', 'relationship_occurrence', 'relationship_quality'
+                    'id'
                 ]
             });
         },
@@ -24,7 +24,7 @@ module.exports = function(context) {
             relationships.create(relationship_obj).then(function() {
                 return relationships.findAll({
                     attributes: [
-                        'id', 'relationship_occurrence', 'relationship_quality'
+                        'id'
                     ]
                 });
             });
@@ -33,7 +33,7 @@ module.exports = function(context) {
             relationships.update(relationship_obj).then(function() {
                 return relationships.findAll({
                     attributes: [
-                        'id', 'relationship_occurrence', 'relationship_quality'
+                        'id'
                     ]
                 });
             });
@@ -43,7 +43,7 @@ module.exports = function(context) {
                 obj.destroy().then(function() {
                     return relationships.findAll({
                         attributes: [
-                            'id', 'relationship_occurrence', 'relationship_quality'
+                            'id'
                         ]
                     });
                 });

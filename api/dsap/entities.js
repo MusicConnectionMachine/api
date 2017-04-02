@@ -7,7 +7,7 @@ module.exports = function(context) {
     return {
         findAllEntities: function() {
             return entities.findAll({
-                attributes: [ 'id', 'entity_type', 'entity_id'
+                attributes: [ 'id'
                 ]
             });
         },
@@ -16,14 +16,14 @@ module.exports = function(context) {
                 where: {
                     id: entity_id
                 },
-                attributes: [ 'id', 'entity_type', 'entity_id'
+                attributes: [ 'id'
                 ]
             });
         },
         addEntity: function(entity_obj) {
             entities.create(entity_obj).then(function() {
                 return entities.findAll({
-                    attributes: [ 'id', 'entity_type', 'entity_id'
+                    attributes: [ 'id'
                     ]
                 });
             });
@@ -31,7 +31,7 @@ module.exports = function(context) {
         updateEntity: function(id, entityObject) {
             entities.update(entityObject).then(function() {
                 return entities.findAll({
-                    attributes: [ 'id', 'entity_type', 'entity_id'
+                    attributes: [ 'id'
                     ]
                 });
             });
@@ -40,7 +40,7 @@ module.exports = function(context) {
             entities.findById(id).then(function(obj) {
                 obj.destroy().then(function() {
                     return entities.findAll({
-                        attributes: [ 'id', 'entity_type', 'entity_id'
+                        attributes: [ 'id'
                         ]
                     });
                 });

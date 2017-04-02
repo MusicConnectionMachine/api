@@ -6,7 +6,7 @@ module.exports = function(context) {
         findAllEvents: function() {
             return events.findAll({
                 attributes: [
-                    'id', 'entity', 'start', 'end', 'description'
+                    'id', 'start', 'end', 'description'
                 ]
             });
         },
@@ -16,7 +16,7 @@ module.exports = function(context) {
                     id: event_id
                 },
                 attributes: [
-                    'id', 'entity', 'start', 'end', 'description'
+                    'id', 'start', 'end', 'description'
                 ]
             });
         },
@@ -24,7 +24,7 @@ module.exports = function(context) {
             events.create(event_obj).then(function() {
                 return events.findAll({
                     attributes: [
-                        'id', 'entity', 'start', 'end', 'description'
+                        'id', 'start', 'end', 'description'
                     ]
                 });
             });
@@ -33,7 +33,7 @@ module.exports = function(context) {
             events.update(event_obj).then(function() {
                 return events.findAll({
                     attributes: [
-                        'id', 'entity', 'start', 'end', 'description'
+                        'id', 'start', 'end', 'description'
                     ]
                 });
             });
@@ -43,7 +43,7 @@ module.exports = function(context) {
                 obj.destroy().then(function() {
                     return events.findAll({
                         attributes: [
-                            'id', 'entity', 'start', 'end', 'description'
+                            'id', 'start', 'end', 'description'
                         ]
                     });
                 });
