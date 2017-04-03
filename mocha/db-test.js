@@ -7,7 +7,7 @@ var context = '';
 
 describe("db", function() {
     before(function (done) {
-        api.connect(function (realContext) {
+        api.connect(null, function (realContext) {
             context = realContext;
             done();
         });
