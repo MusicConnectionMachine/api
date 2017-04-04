@@ -1,51 +1,51 @@
 'use strict';
-module.exports = function(context) {
-        // Imports
+module.exports = function (context) {
+    // Imports
     var artists = context.component('models').module('artists');
-        //  var works = context.component('models').module('works');
-        //returns all artists
+    //  var works = context.component('models').module('works');
+    //returns all artists
     return {
-        findAllArtists: function() {
+        findAllArtists: function () {
             return artists.findAll({
-                attributes: ['name', 'id', 'artist_type', 'picture', 'dateOfBirth', 'placeOfBirth', 'dateOfDeath',
-                    'placeOfDeath', 'nationality', 'tags', 'pseudonym', 'source_link'
+                attributes: ['name', 'id', 'artist_type', 'dateOfBirth', 'placeOfBirth', 'dateOfDeath',
+                    'placeOfDeath', 'nationality', 'tags', 'pseudonym', 'source_link', 'wiki_link', 'wiki_pageid'
                 ]
             });
         },
-        findArtistsById: function(artist_id) {
+        findArtistsById: function (artist_id) {
             return artists.findOne({
                 where: {
                     id: artist_id
                 },
-                attributes: ['name', 'id', 'artist_type', 'picture', 'dateOfBirth', 'placeOfBirth', 'dateOfDeath',
-                    'placeOfDeath', 'nationality', 'tags', 'pseudonym', 'source_link'
+                attributes: ['name', 'id', 'artist_type', 'dateOfBirth', 'placeOfBirth', 'dateOfDeath',
+                    'placeOfDeath', 'nationality', 'tags', 'pseudonym', 'source_link', 'wiki_link', 'wiki_pageid'
                 ]
             });
         },
-        addArtist: function(artist_obj) {
-            artists.create(artist_obj).then(function() {
+        addArtist: function (artist_obj) {
+            artists.create(artist_obj).then(function () {
                 return artists.findAll({
-                    attributes: ['name', 'id', 'artist_type', 'picture', 'dateOfBirth', 'placeOfBirth', 'dateOfDeath',
-                        'placeOfDeath', 'nationality', 'tags', 'pseudonym', 'source_link'
+                    attributes: ['name', 'id', 'artist_type', 'dateOfBirth', 'placeOfBirth', 'dateOfDeath',
+                        'placeOfDeath', 'nationality', 'tags', 'pseudonym', 'source_link', 'wiki_link', 'wiki_pageid'
                     ]
                 });
             });
         },
-        updateArtist: function(id, artistObject) {
-            artists.update(artistObject).then(function() {
+        updateArtist: function (id, artistObject) {
+            artists.update(artistObject).then(function () {
                 return artists.findAll({
-                    attributes: ['name', 'id', 'artist_type', 'picture', 'dateOfBirth', 'placeOfBirth', 'dateOfDeath',
-                        'placeOfDeath', 'nationality', 'tags', 'pseudonym', 'source_link'
+                    attributes: ['name', 'id', 'artist_type', 'dateOfBirth', 'placeOfBirth', 'dateOfDeath',
+                        'placeOfDeath', 'nationality', 'tags', 'pseudonym', 'source_link', 'wiki_link', 'wiki_pageid'
                     ]
                 });
             });
         },
-        deleteArtist: function(id) {
-            artists.findById(id).then(function(obj) {
-                obj.destroy().then(function() {
+        deleteArtist: function (id) {
+            artists.findById(id).then(function (obj) {
+                obj.destroy().then(function () {
                     return artists.findAll({
-                        attributes: ['name', 'id', 'artist_type', 'picture', 'dateOfBirth', 'placeOfBirth', 'dateOfDeath',
-                            'placeOfDeath', 'nationality', 'tags', 'pseudonym', 'source_link'
+                        attributes: ['name', 'id', 'artist_type', 'dateOfBirth', 'placeOfBirth', 'dateOfDeath',
+                            'placeOfDeath', 'nationality', 'tags', 'pseudonym', 'source_link', 'wiki_link', 'wiki_pageid'
                         ]
                     });
                 });

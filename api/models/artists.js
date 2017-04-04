@@ -1,3 +1,4 @@
+var moment = require('moment');
 module.exports = function (context) {
     return context.sequelize.define('artists', {
         name: {
@@ -11,17 +12,24 @@ module.exports = function (context) {
         artist_type: {
             type: context.Sequelize.ENUM('composer', 'musician')
         },
-        picture: {
-            type: context.Sequelize.BLOB
-        },
         dateOfBirth: {
-            type: context.Sequelize.DATEONLY
+            type: context.Sequelize.DATEONLY,
+            //Sequelize DATEONLY returns full-date format with Timezone, we need
+            //date in YYYY-MM-DD format.
+            get:function(){
+                return moment.utc(this.getDataValue('dateOfBirth')).format('YYYY-MM-DD');
+            }
         },
         placeOfBirth: {
             type: context.Sequelize.TEXT
         },
         dateOfDeath: {
-            type: context.Sequelize.DATEONLY
+            type: context.Sequelize.DATEONLY,
+            //Sequelize DATEONLY returns full-date format with Timezone, we need
+            //date in YYYY-MM-DD format.
+            get:function(){
+                return moment.utc(this.getDataValue('dateOfDeath')).format('YYYY-MM-DD');
+            }
         },
         placeOfDeath: {
             type: context.Sequelize.TEXT

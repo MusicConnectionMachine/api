@@ -9,8 +9,7 @@ ErrorResponse:
 Entity:
   properties:
     id:
-      type: integer
-      format: int32
+      type: string
     entity_type:
       type: string
     entity_id:
@@ -21,21 +20,16 @@ UpdateEntity:
     entity_type:
       type: string
     entity_id:
-      type: integer
-      format: int32
+     type: string
 
 Artist:
   properties:
     id:
-      type: integer
-      format: int32
+     type: string
     name:
       type: string
     artist_type:
       type: string
-    picture :
-      type: string
-      format: binary
     dateOfBirth :
       type: string
       format: date
@@ -58,14 +52,16 @@ Artist:
         type: string
     source_link:
       type : string
+    wiki_link:
+      type : string
+    wiki_pageid:
+      type : string
 
 UpdateArtist:
    properties:
     name:
       type: string
     artist_type:
-      type: string
-    picture :
       type: string
       format: binary
     dateOfBirth :
@@ -90,12 +86,15 @@ UpdateArtist:
         type: string
     source_link:
       type : string
+    wiki_link:
+      type : string
+    wiki_pageid:
+      type : string
 
 Instrument:
   properties:
     id:
-      type: integer
-      format: int32
+      type: string
     name:
       type: string
 
@@ -107,8 +106,7 @@ UpdateInstrument:
 Release:
   properties:
     id:
-      type: integer
-      format: int32
+     type: string
     title:
       type: string
     format:
@@ -138,8 +136,7 @@ UpdateRelease:
 Work:
   properties:
     id:
-      type: integer
-      format: int32
+     type: string
     title:
       type: string
     compositionyear:

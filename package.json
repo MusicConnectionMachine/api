@@ -8,13 +8,14 @@
   "license": "",
   "main": "app.js",
   "dependencies": {
+    "chai": "^3.5.0",
     "express": "^4.12.3",
+    "mocha": "^3.2.0",
+    "moment": "^2.18.1",
     "pg": "6.1.4",
     "pg-hstore": "2.3.2",
     "sequelize": "3.30.2",
-    "swagger-express-mw": "^0.1.0",
-    "mocha": "^3.2.0",
-    "chai": "^3.5.0"
+    "swagger-express-mw": "^0.1.0"
   },
   "devDependencies": {
     "eslint": "^3.18.0",
