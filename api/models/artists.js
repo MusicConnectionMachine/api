@@ -1,19 +1,20 @@
 var moment = require('moment');
-module.exports = function (context) {
-    return context.sequelize.define('artists', {
+
+module.exports = function(sequelize, DataTypes) {
+    return sequelize.define('artists', {
         name: {
-            type: context.Sequelize.TEXT
+            type: DataTypes.TEXT
         },
         id: {
-            type: context.Sequelize.UUID,
-            defaultValue: context.Sequelize.UUIDV4,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
         artist_type: {
-            type: context.Sequelize.ENUM('composer', 'musician')
+            type: DataTypes.ENUM('composer', 'musician')
         },
         dateOfBirth: {
-            type: context.Sequelize.DATEONLY,
+            type: DataTypes.DATEONLY,
             //Sequelize DATEONLY returns full-date format with Timezone, we need
             //date in YYYY-MM-DD format.
             get:function(){
@@ -21,10 +22,10 @@ module.exports = function (context) {
             }
         },
         placeOfBirth: {
-            type: context.Sequelize.TEXT
+            type: DataTypes.TEXT
         },
         dateOfDeath: {
-            type: context.Sequelize.DATEONLY,
+            type: DataTypes.DATEONLY,
             //Sequelize DATEONLY returns full-date format with Timezone, we need
             //date in YYYY-MM-DD format.
             get:function(){
@@ -32,27 +33,37 @@ module.exports = function (context) {
             }
         },
         placeOfDeath: {
-            type: context.Sequelize.TEXT
+            type: DataTypes.TEXT
         },
         nationality: {
-            type: context.Sequelize.TEXT
+            type: DataTypes.TEXT
         },
         tags: {
-            type: context.Sequelize.ARRAY(context.Sequelize.TEXT)
+            type: DataTypes.ARRAY(DataTypes.TEXT)
         },
         pseudonym: {
-            type: context.Sequelize.ARRAY(context.Sequelize.TEXT)
+            type: DataTypes.ARRAY(DataTypes.TEXT)
         },
         source_link: {
-            type: context.Sequelize.TEXT
+            type: DataTypes.TEXT
         },
         wiki_link: {
-            type: context.Sequelize.TEXT
+            type: DataTypes.TEXT
         },
         wiki_pageid: {
-            type: context.Sequelize.TEXT
+            type: DataTypes.TEXT
         }
     }, {
-        freezeTableName: true // Model tableName will be the same as the model name
+        freezeTableName: true, // Model tableName will be the same as the model name
+        classMethods: {
+            associate: function(models) {
+                this.belongsToMany(models.works, {through:'ArtistComposedWork'});
+                this.belongsToMany(models.instruments, {through:'ArtistPlayedInstrument'});
+                this.belongsToMany(models.instruments, {through:'ArtistComposedInstrument'});
+                this.belongsToMany(models.releases, {through:'ArtistPerformedRelease'});
+
+                this.belongsTo(models.entities);
+            }
+        }
     });
-}
+};

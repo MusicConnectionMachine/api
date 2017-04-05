@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(context) {
-    var websites = context.component('models').module('websites');
+    var websites = context.models.websites;
 
     return {
         findAllWebsites: function() {

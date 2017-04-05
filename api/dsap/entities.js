@@ -1,7 +1,7 @@
 'use strict';
 module.exports = function(context) {
         // Imports
-    var entities = context.component('models').module('entities');
+    var entities = context.models.entities;
         //  var works = context.component('models').module('works');
         //returns all entities
     return {

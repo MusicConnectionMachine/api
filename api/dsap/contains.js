@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(context) {
-    var contains = context.component('models').module('contains');
+    var contains = context.models.contains;
 
     return {
         findAllContains: function() {

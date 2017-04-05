@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(context) {
-    var relationships = context.component('models').module('relationships');
+    var relationships = context.models.relationships;
 
     return {
         findAllRelationships: function() {

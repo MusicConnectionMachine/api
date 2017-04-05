@@ -1,3 +1,6 @@
+const path = require('path');
+const fs = require('fs');
+
 var context;
 
 module.exports = {
@@ -6,8 +9,6 @@ module.exports = {
 
         // Imports
         const pg = require('pg');
-        const fs = require('fs');
-        const path = require('path');
         const Sequelize = require('sequelize');
 
         console.log('Initializing context');
@@ -17,32 +18,14 @@ module.exports = {
             pg: pg,
             path: path,
             Sequelize: Sequelize,
-            constants: {}
-        };
-
-        // Function to load all components from the respective folders (models, controllers,  )
-        context.component = function(componentName) {
-            if (!context[componentName]) {
-                context[componentName] = {};
-            }
-
-            return {
-                module: function(moduleName) {
-                    if (!context[componentName][moduleName]) {
-                        console.log('Loading component ' + componentName);
-                        context[componentName][moduleName] = require(path.join(__dirname, "api", componentName, moduleName))(context,
-                            componentName, moduleName);
-                        console.log('LOADED ' + componentName + '.' + moduleName);
-                    }
-
-                    return context[componentName][moduleName];
-                }
-            }
+            constants: {},
+            models: {}
         };
 
         callback(context);
         return context;
     },
+
     connect: function(postgresCS,callback) {
         const context = this.createContext(postgresCS);
 
@@ -62,19 +45,27 @@ module.exports = {
                 });
         });
     },
+
     loadModels: function(callback) {
-        context.fs.readdir(context.path.join(__dirname, 'api', 'models'), (err, files) => {
-            //Load ALL modules.
-            //Don't get confused by weird logging order! console.log is async and will mix up the actual loading order.
-            files.forEach(file => {
-                context.component('models').module(file.replace('.js', ''));
+        const modelBasePath = path.join(__dirname, 'api', 'models');
+
+        fs.readdir(modelBasePath, (err, files) => {
+            files.forEach((file) => {
+                const model = context.sequelize.import(path.join(modelBasePath, file));
+                context.models[model.name] = model;
             });
 
-            context.component('helpers').module('buildRelations')();
+            // initialize relationships
+            Object.keys(context.models).forEach(function(modelName) {
+                if ("associate" in context.models[modelName]) {
+                    context.models[modelName].associate(context.models);
+                }
+            });
 
             callback();
         });
     },
+
     createContext: function(postgresCS) {
         context = this.start();
 
@@ -96,7 +87,7 @@ module.exports = {
 
         };
 
-        const databaseURI = postgresCS||process.env.databaseuri;
+        const databaseURI = postgresCS || process.env.databaseuri;
 
         if (databaseURI) {
             context.sequelize = new context.Sequelize(databaseURI, dbConfig);
@@ -115,10 +106,11 @@ module.exports = {
 
         return context;
     },
+
     getContext: function() {
         if(context) {
             return context;
         }
         console.log('Failed to retrieve context: context doesn\'t exist.');
     }
-}
+};

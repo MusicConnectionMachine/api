@@ -1,17 +1,23 @@
-module.exports = function (context) {
-    return context.sequelize.define('relationshipOccurrences', {
+module.exports = function(sequelize, DataTypes) {
+    return sequelize.define('relationshipOccurrences', {
         id: {
-            type: context.Sequelize.UUID,
-            defaultValue: context.Sequelize.UUIDV4,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
         sentence_start:{
-            type:context.Sequelize.INTEGER
+            type:DataTypes.INTEGER
         },
         sentence_stop:{
-            type:context.Sequelize.INTEGER
+            type:DataTypes.INTEGER
         }
     }, {
-        freezeTableName: true // Model tableName will be the same as the model name
+        freezeTableName: true, // Model tableName will be the same as the model name
+        classMethods: {
+            associate: function(models) {
+                this.belongsTo(models.websites);
+                this.hasMany(models.relationships);
+            }
+        }
     });
 };

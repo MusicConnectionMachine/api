@@ -12,125 +12,40 @@ describe("db", function() {
             done();
         });
     });
-    it("should create table artists", function (done) {
-        createTable("artists")
-            .then(function () {
+    it("tables should exist", function (done) {
+
+        const expectedResults = [
+            'artists',
+            'contains',
+            'entities',
+            'events',
+            'instruments',
+            'relationshipDescriptions',
+            'relationshipEntities',
+            'relationshipOccurrences',
+            'relationships',
+            'relationshipTypes',
+            'releases',
+            'websites',
+            'works'
+        ];
+
+        const query = `SELECT table_name
+                       FROM information_schema.tables
+                       WHERE table_schema='public'
+                       AND table_type='BASE TABLE';`;
+
+        context.sequelize.query(query, { type: context.Sequelize.QueryTypes.SELECT})
+            .then(function(results) {
+                const tableNames = results.map((r) => r.table_name);
+                expectedResults.forEach((expected) => {
+                    assert.include(tableNames, expected)
+                });
                 done();
-            })
-            .catch(function (err) {
-                done(err);
-            });
-    });
-    it("should create table contains", function (done) {
-        createTable("contains")
-            .then(function () {
-                done();
-            })
-            .catch(function (err) {
-                done(err);
-            });
-    });
-    it("should create table entities", function (done) {
-        createTable("entities")
-            .then(function () {
-                done();
-            })
-            .catch(function (err) {
-                done(err);
-            });
-    });
-    it("should create table events", function (done) {
-        createTable("events")
-            .then(function () {
-                done();
-            })
-            .catch(function (err) {
-                done(err);
-            });
-    });
-    it("should create table instruments", function (done) {
-        createTable("instruments")
-            .then(function () {
-                done();
-            })
-            .catch(function (err) {
-                done(err);
-            });
-    });
-    it("should create table relationshipDescriptions", function (done) {
-        createTable("relationshipDescriptions")
-            .then(function () {
-                done();
-            })
-            .catch(function (err) {
-                done(err);
-            });
-    });
-    it("should create table relationshipEntities", function (done) {
-        createTable("relationshipEntities")
-            .then(function () {
-                done();
-            })
-            .catch(function (err) {
-                done(err);
-            });
-    });
-    it("should create table relationshipOccurrences", function (done) {
-        createTable("relationshipOccurrences")
-            .then(function () {
-                done();
-            })
-            .catch(function (err) {
-                done(err);
-            });
-    });
-    it("should create table relationships", function (done) {
-        createTable("relationships")
-            .then(function () {
-                done();
-            })
-            .catch(function (err) {
-                done(err);
-            });
-    });
-    it("should create table relationshipTypes", function (done) {
-        createTable("relationshipTypes")
-            .then(function () {
-                done();
-            })
-            .catch(function (err) {
-                done(err);
-            });
-    });
-    it("should create table releases", function (done) {
-        createTable("releases")
-            .then(function () {
-                done();
-            })
-            .catch(function (err) {
-                done(err);
-            });
-    });
-    it("should create table websites", function (done) {
-        createTable("websites")
-            .then(function () {
-                done();
-            })
-            .catch(function (err) {
-                done(err);
-            });
-    });
-    it("should create table works", function (done) {
-        createTable("works")
-            .then(function () {
-                done();
-            })
-            .catch(function (err) {
-                done(err);
             });
     });
     it("should select from table artists", function (done) {
-        context.component('dsap').module('artists')
+        require('../api/dsap/artists')(context)
             .findAllArtists()
             .then(function () {
                 done();
@@ -140,7 +55,7 @@ describe("db", function() {
             });
     });
     it("should select from table entities", function (done) {
-        context.component('dsap').module('entities')
+        require('../api/dsap/entities')(context)
             .findAllEntities()
             .then(function () {
                 done();
@@ -150,7 +65,7 @@ describe("db", function() {
             });
     });
     it("should select from table contains", function (done) {
-        context.component('dsap').module('contains')
+        require('../api/dsap/contains')(context)
             .findAllContains()
             .then(function () {
                 done();
@@ -160,7 +75,7 @@ describe("db", function() {
             });
     });
     it("should select from table events", function (done) {
-        context.component('dsap').module('events')
+        require('../api/dsap/events')(context)
             .findAllEvents()
             .then(function () {
                 done();
@@ -170,7 +85,7 @@ describe("db", function() {
             });
     });
     it("should select from table instruments", function (done) {
-        context.component('dsap').module('instruments')
+        require('../api/dsap/instruments')(context)
             .findAllInstruments()
             .then(function () {
                 done();
@@ -180,7 +95,7 @@ describe("db", function() {
             });
     });
     it("should select from table relationships", function (done) {
-        context.component('dsap').module('relationships')
+        require('../api/dsap/relationships')(context)
             .findAllRelationships()
             .then(function () {
                 done();
@@ -190,7 +105,7 @@ describe("db", function() {
             });
     });
     it("should select from table releases", function (done) {
-        context.component('dsap').module('releases')
+        require('../api/dsap/releases')(context)
             .findAllReleases()
             .then(function () {
                 done();
@@ -200,7 +115,7 @@ describe("db", function() {
             });
     });
     it("should select from table websites", function (done) {
-        context.component('dsap').module('websites')
+        require('../api/dsap/websites')(context)
             .findAllWebsites()
             .then(function () {
                 done();
@@ -210,7 +125,7 @@ describe("db", function() {
             });
     });
     it("should select from table works", function (done) {
-        context.component('dsap').module('works')
+        require('../api/dsap/works')(context)
             .findAllWorks()
             .then(function () {
                 done();
@@ -220,8 +135,3 @@ describe("db", function() {
             });
     });
 });
-
-function createTable(module) {
-    var model = context.component('models').module(module);
-    return model.create({});
-}

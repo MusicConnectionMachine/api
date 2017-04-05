@@ -1,26 +1,33 @@
-module.exports = function (context) {
-    return context.sequelize.define('releases', {
+module.exports = function(sequelize, DataTypes) {
+    return sequelize.define('releases', {
         id: {
-            type: context.Sequelize.UUID,
-            defaultValue: context.Sequelize.UUIDV4,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
         title: {
-            type: context.Sequelize.TEXT
+            type: DataTypes.TEXT
         },
         format: {
-            type: context.Sequelize.TEXT
+            type: DataTypes.TEXT
         },
         date: {
-            type: context.Sequelize.DATEONLY
+            type: DataTypes.DATEONLY
         },
         country: {
-            type: context.Sequelize.TEXT
+            type: DataTypes.TEXT
         },
         label: {
-            type: context.Sequelize.TEXT
+            type: DataTypes.TEXT
         }
     }, {
-        freezeTableName: true // Model tableName will be the same as the model name
+        freezeTableName: true, // Model tableName will be the same as the model name
+        classMethods: {
+            associate: function (models) {
+                this.belongsToMany(models.artists, {through: 'ArtistPerformedRelease'});
+
+                this.belongsTo(models.entities);
+            }
+        }
     });
 };

@@ -1,7 +1,7 @@
 'use strict';
 
 var context = require('../../database.js').getContext();
-var relationships = context.component('dsap').module('relationships');
+var relationships = require('../dsap/relationships.js')(context);
 
 module.exports = {
     getAllRelationships: getAllRelationships,

@@ -1,7 +1,7 @@
 'use strict';
 
 var context = require('../../database.js').getContext();
-var events = context.component('dsap').module('events');
+var events = require('../dsap/events.js')(context);
 
 module.exports = {
     getAllEvents: getAllEvents,

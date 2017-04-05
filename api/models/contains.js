@@ -1,16 +1,23 @@
-module.exports = function (context) {
-    return context.sequelize.define('contains', {
+module.exports = function(sequelize, DataTypes) {
+    return sequelize.define('contains', {
         id: {
-            type: context.Sequelize.UUID,
-            defaultValue: context.Sequelize.UUIDV4,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
         occurrences: {
-            type: context.Sequelize.TEXT
+            type: DataTypes.TEXT
         }
     }, {
-        freezeTableName: true // Model tableName will be the same as the model name
+        freezeTableName: true, // Model tableName will be the same as the model name
+        classMethods: {
+            associate: function(models) {
+                this.belongsTo(models.websites);
+                this.belongsTo(models.entities);
+            }
+        }
     });
+
 };
 
 

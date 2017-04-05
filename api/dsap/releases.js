@@ -1,7 +1,7 @@
 'use strict';
 module.exports = function (context) {
     // Imports
-    var releases = context.component('models').module('releases');
+    var releases = context.models.releases;
     return {
         findAllReleases: function () {
             return releases.findAll({

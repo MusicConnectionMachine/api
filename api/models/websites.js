@@ -1,17 +1,22 @@
-module.exports = function (context) {
-    return context.sequelize.define('websites', {
+module.exports = function(sequelize, DataTypes) {
+    return sequelize.define('websites', {
         id: {
-            type: context.Sequelize.UUID,
-            defaultValue: context.Sequelize.UUIDV4,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
         url: {
-            type: context.Sequelize.TEXT
+            type: DataTypes.TEXT
         },
         blob_url: {
-            type: context.Sequelize.TEXT
+            type: DataTypes.TEXT
         }
     }, {
-        freezeTableName: true // Model tableName will be the same as the model name
+        freezeTableName: true, // Model tableName will be the same as the model name
+        classMethods: {
+            associate: function(models) {
+                this.hasMany(models.relationshipOccurrences);
+            }
+        }
     });
 };

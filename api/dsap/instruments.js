@@ -1,7 +1,7 @@
 'use strict';
 module.exports = function (context) {
     // Imports
-    var instruments = context.component('models').module('instruments');
+    var instruments = context.models.instruments;
     return {
         findAllInstruments: function () {
             return instruments.findAll({

@@ -1,9 +1,11 @@
 'use strict';
-module.exports = function (context) {
-    // Imports
-    var artists = context.component('models').module('artists');
-    //  var works = context.component('models').module('works');
-    //returns all artists
+
+module.exports = function(context) {
+        // Imports
+    var artists = context.models.artists;
+        //  var works = context.component('models').module('works');
+        //returns all artists
+
     return {
         findAllArtists: function () {
             return artists.findAll({

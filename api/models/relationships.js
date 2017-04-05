@@ -1,17 +1,26 @@
-module.exports = function (context) {
-    return context.sequelize.define('relationships', {
+module.exports = function(sequelize, DataTypes) {
+    return sequelize.define('relationships', {
         id: {
-            type: context.Sequelize.UUID,
-            defaultValue: context.Sequelize.UUIDV4,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
         confidence: {
-            type: context.Sequelize.FLOAT
+            type: DataTypes.FLOAT
         },
         relation: {
-            type: context.Sequelize.TEXT
+            type: DataTypes.TEXT
         }
     }, {
-        freezeTableName: true // Model tableName will be the same as the model name
+        freezeTableName: true, // Model tableName will be the same as the model name
+        classMethods: {
+            associate: function(models) {
+                this.belongsTo(models.relationshipDescriptions);
+                this.belongsTo(models.relationshipOccurrences);
+                this.belongsTo(models.relationshipEntities, {foreignKey: 'subjectId', as: 'Subject'});
+                this.belongsTo(models.relationshipEntities, {foreignKey: 'objectId', as: 'Object'});
+
+            }
+        }
     });
 };

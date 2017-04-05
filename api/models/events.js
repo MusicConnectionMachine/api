@@ -1,18 +1,18 @@
-module.exports = function (context) {
-    return context.sequelize.define('events', {
+module.exports = function(sequelize, DataTypes) {
+    return sequelize.define('events', {
         id: {
-            type: context.Sequelize.UUID,
-            defaultValue: context.Sequelize.UUIDV4,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
         start:{
-            type:context.Sequelize.STRING
+            type:DataTypes.STRING
         },
         end:{
-            type:context.Sequelize.STRING
+            type:DataTypes.STRING
         },
         description:{
-            type:context.Sequelize.TEXT
+            type:DataTypes.TEXT
         }
     }, {
         freezeTableName: true // Model tableName will be the same as the model name

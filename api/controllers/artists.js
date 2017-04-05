@@ -1,7 +1,7 @@
 'use strict';
 
 var context = require('../../database.js').getContext();
-var artists = context.component('dsap').module('artists');
+var artists = require('../dsap/artists.js')(context);
 
 module.exports = {
     getAllArtists: getAllArtists,

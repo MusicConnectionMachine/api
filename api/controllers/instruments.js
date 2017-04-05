@@ -1,7 +1,7 @@
 'use strict';
 
 var context = require('../../database.js').getContext();
-var instruments = context.component('dsap').module('instruments');
+var instruments = require('../dsap/instruments.js')(context);
 
 module.exports = {
     getAllInstruments: getAllInstruments,

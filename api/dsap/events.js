@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(context) {
-    var events = context.component('models').module('events');
+    var events = context.models.events;
 
     return {
         findAllEvents: function() {

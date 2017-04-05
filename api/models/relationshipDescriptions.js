@@ -1,18 +1,24 @@
-module.exports = function (context) {
-    return context.sequelize.define('relationshipDescriptions', {
+module.exports = function(sequelize, DataTypes) {
+    return sequelize.define('relationshipDescriptions', {
         id: {
-            type: context.Sequelize.UUID,
-            defaultValue: context.Sequelize.UUIDV4,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
         relationship_name:{
-            type:context.Sequelize.STRING
+            type:DataTypes.STRING
         },
         inverse:{
-            type:context.Sequelize.BOOLEAN
+            type:DataTypes.BOOLEAN
         }
     }, {
-        freezeTableName: true // Model tableName will be the same as the model name
+        freezeTableName: true, // Model tableName will be the same as the model name
+        classMethods: {
+            associate: function(models) {
+                this.belongsTo(models.relationshipTypes);
+                this.hasMany(models.relationships);
+            }
+        }
     });
 };
 
