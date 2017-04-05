@@ -9,7 +9,7 @@ describe("db", function() {
     before(function (done) {
         api.connect(null, function (realContext) {
             context = realContext;
-            done();
+            context.sequelize.sync({force: true}).then(() => done());
         });
     });
     it("tables should exist", function (done) {

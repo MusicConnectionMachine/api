@@ -29,7 +29,7 @@
     "start": "node app.js",
     "prestart": "npm run swagger-compile",
     "pretest": "npm run swagger-compile",
-    "test": "npm-run-all test:swagger lint",
+    "test": "npm-run-all test:* lint",
     "test:mocha": "mocha \"mocha\"",
     "test:swagger": "swagger_swagger_fileName=api/swagger/swagger.json swagger project test",
     "lint": "./node_modules/.bin/eslint ."
