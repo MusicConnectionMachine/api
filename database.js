@@ -4,8 +4,7 @@ const fs = require('fs');
 var context;
 
 module.exports = {
-    start: function(callback) {
-        callback = callback || function() {};
+    start: function(callback = () => {}) {
 
         // Imports
         const pg = require('pg');
@@ -26,45 +25,50 @@ module.exports = {
         return context;
     },
 
-    connect: function(postgresCS,callback) {
+    connect: function(postgresCS, callback = () => {}) {
         const context = this.createContext(postgresCS);
 
-        this.loadModels(() => {
-            return context.sequelize.authenticate()
-                .then(() => {
-                    return context.sequelize.sync()
-                })
-                .then(() => {
-                    console.log('Connection has been established successfully.');
-                    return callback(context);
-                })
-                .catch(function (err) {
-                    // Logs all application errors that happen after succesful db test OR error in connecting to DB
-
-                    console.error(err.code);
-                    console.error(err);
-                    return process.exit(1);
-                });
-        });
+        return this.loadModels()
+            .then(() => {
+                return context.sequelize.authenticate()
+            })
+            .then(() => {
+                return context.sequelize.sync()
+            })
+            .then(() => {
+                console.log('Connection has been established successfully.');
+                return callback(context);
+            }, (err) => {
+                console.error(err);
+                return process.exit(1);
+            });
     },
 
-    loadModels: function(callback) {
+    loadModels: function() {
         const modelBasePath = path.join(__dirname, 'api', 'models');
 
-        fs.readdir(modelBasePath, (err, files) => {
-            files.forEach((file) => {
-                const model = context.sequelize.import(path.join(modelBasePath, file));
-                context.models[model.name] = model;
-            });
+        return new Promise(function(resolve, reject) {
+            fs.readdir(modelBasePath, (err, files) => {
 
-            // initialize relationships
-            Object.keys(context.models).forEach(function(modelName) {
-                if ("associate" in context.models[modelName]) {
-                    context.models[modelName].associate(context.models);
+                if(err) {
+                    reject(err);
+                    return;
                 }
-            });
 
-            callback();
+                files.forEach((file) => {
+                    const model = context.sequelize.import(path.join(modelBasePath, file));
+                    context.models[model.name] = model;
+                });
+
+                // initialize relationships
+                Object.keys(context.models).forEach(function(modelName) {
+                    if ("associate" in context.models[modelName]) {
+                        context.models[modelName].associate(context.models);
+                    }
+                });
+
+                resolve();
+            });
         });
     },
 
