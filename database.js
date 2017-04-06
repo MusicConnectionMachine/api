@@ -30,9 +30,11 @@ module.exports = {
         const context = this.createContext(postgresCS);
 
         this.loadModels(() => {
-            return context.sequelize
-                .authenticate()
-                .then(function (err) {
+            return context.sequelize.authenticate()
+                .then(() => {
+                    return context.sequelize.sync()
+                })
+                .then(() => {
                     console.log('Connection has been established successfully.');
                     return callback(context);
                 })
