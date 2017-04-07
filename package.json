@@ -12,6 +12,7 @@
     "express": "^4.12.3",
     "mocha": "^3.2.0",
     "moment": "^2.18.1",
+    "multi-file-swagger": "^2.0.0",
     "pg": "6.1.4",
     "pg-hstore": "2.3.2",
     "sequelize": "3.30.2",
@@ -24,8 +25,7 @@
     "supertest": "^1.0.0"
   },
   "scripts": {
-    "postinstall": "npm install -g multi-file-swagger",
-    "swagger-compile": "cd ./api/swagger/src/ && multi-file-swagger ./swagger.yaml > ../swagger.json && cd ../../../",
+    "swagger-compile": "cd ./api/swagger/src/ && node ../../../node_modules/multi-file-swagger/resolve.js ./swagger.yaml > ../swagger.json && cd ../../../",
     "start": "node app.js",
     "prestart": "npm run swagger-compile",
     "pretest": "npm run swagger-compile",
