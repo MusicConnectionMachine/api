@@ -27,7 +27,6 @@
   "scripts": {
     "swagger-compile": "cd ./api/swagger/src/ && node ../../../node_modules/multi-file-swagger/resolve.js ./swagger.yaml > ../swagger.json && cd ../../../",
     "start": "node app.js",
-    "prestart": "npm run swagger-compile",
     "pretest": "npm run swagger-compile",
     "test": "npm-run-all test:* lint",
     "test:mocha": "mocha \"mocha\"",

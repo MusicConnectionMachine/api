@@ -8,7 +8,7 @@ WORKDIR /usr/src/api
 COPY . /usr/src/api
 
 RUN npm install
-RUN npm install -g multi-file-swagger
+RUN npm swagger-compile
 
 
 EXPOSE 10010
