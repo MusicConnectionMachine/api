@@ -5,5 +5,8 @@ module.exports = {
     "port": process.env.databaseport || "5432",
     "host": process.env.databasehost || "127.0.0.1",
     "collection": process.env.databasecollection || "postgres",
+  },
+  "api" : {
+    "apiKey": process.env.apikey || "not so secret"
   }
 };

@@ -4,9 +4,9 @@ info:
   title: MusicConnectionMachine API
 # during dev, should point to your local machine
 host: localhost:10010
-# basePath prefixes all resource paths 
+# basePath prefixes all resource paths
 basePath: /
-# 
+#
 schemes:
   # tip: remove http to make production-grade
   - http
@@ -17,6 +17,16 @@ consumes:
 # format of the responses to the client (Accepts)
 produces:
   - application/json
+
+
+securityDefinitions:
+  DefaultSecurity:
+    type: apiKey
+    in: header
+    name: API-KEY
+
+security:
+  - DefaultSecurity: []
 
 paths:
   $ref: ./paths/paths.yaml
