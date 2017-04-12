@@ -1,13 +1,13 @@
 x-swagger-router-controller: relationships
 get:
-  description: Retruns relationship with specified ID
+  description: Returns relationship with specified ID
   operationId: getRelationshipByID
   parameters:
     - name: id
       in: path
-      description: ID of Instrument
+      description: ID of relationship
       required: true
-      type: integer
+      type: string
   responses:
     "200":
       description: Success
@@ -28,9 +28,9 @@ put:
       type: string
     - name: id
       in: path
-      description: ID of instrument
+      description: ID of relationship
       required: true
-      type: integer
+      type: string
     - name: body
       in: body
       description: instrument data
@@ -57,9 +57,9 @@ delete:
       type: string
     - name: id
       in: path
-      description: ID of Relationship
+      description: ID of relationship
       required: true
-      type: integer
+      type: string
   responses:
     "200":
       description: Success

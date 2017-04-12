@@ -8,7 +8,8 @@ module.exports = {
     getRelationshipByID: getRelationshipByID,
     addRelationship: addRelationship,
     updateRelationship: updateRelationship,
-    deleteRelationship: deleteRelationship
+    deleteRelationship: deleteRelationship,
+    getRelationshipTrust: getRelationshipTrust
 };
 
 function getAllRelationships(req, res) {
@@ -58,3 +59,11 @@ function deleteRelationship(req, res) {
     });
 }
 
+function getRelationshipTrust(req, res) {
+    let id = req.swagger.params.id.value;
+    relationships.getRelationshipTrust(id).then(function(count) {
+        res.status(200).json(count);
+    }).catch(function(error) {
+        res.status(500).send(error);
+    });
+}

@@ -1,0 +1,19 @@
+x-swagger-router-controller: relationships
+get:
+  description: Returns how often a relationship (defined by same relationship type for same subject and object) specified by ID occurs
+  operationId: getRelationshipTrust
+  parameters:
+    - name: id
+      in: path
+      description: ID of relationship
+      required: true
+      type: string
+  responses:
+    "200":
+      description: Success
+      schema:
+        $ref: '#/definitions/Relationship'
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"

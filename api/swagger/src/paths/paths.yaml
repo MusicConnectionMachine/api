@@ -51,6 +51,9 @@
 /relationships/{id}:
   $ref: ./relationships/relationships-id.yaml
 
+/relationships/trust/{id}:
+  $ref: ./relationships/relationships-count.yaml
+
 /events:
   $ref: ./events/events.yaml
 
