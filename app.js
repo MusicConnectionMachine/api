@@ -22,22 +22,17 @@ var swaggerConfig = {
 require('./database.js').connect(null,function (context) {
 
     SwaggerExpress.create(swaggerConfig, function (err, swaggerExpress) {
-        context.sequelize.sync({force: true}).then(function () {
+        if (err) {
+            throw err;
+        }
 
-            if (err) {
-                throw err;
-            }
+        // install middleware
+        swaggerExpress.register(app);
 
-            // install middleware
-            swaggerExpress.register(app);
+        var port = process.env.PORT || 10010;
+        app.listen(port);
 
-            var port = process.env.PORT || 10010;
-            app.listen(port);
-
-            console.log('Server running at http://127.0.0.1:' + port);
-
-        })
-
+        console.log('Server running at http://127.0.0.1:' + port);
     });
 
 });
