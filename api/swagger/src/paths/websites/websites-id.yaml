@@ -7,7 +7,7 @@ get:
       in: path
       description: ID of website
       required: true
-      type: integer
+      type: string
       format: int64
   responses:
     "200":
@@ -31,7 +31,7 @@ put:
       in: path
       description: ID of website
       required: true
-      type: integer
+      type: string
       format: int64
     - name: body
       in: body
@@ -61,7 +61,7 @@ delete:
       in: path
       description: ID of website
       required: true
-      type: integer
+      type: string
       format: int64
   responses:
     "200":
