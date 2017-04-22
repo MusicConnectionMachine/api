@@ -65,6 +65,9 @@
 /autosuggest:
   $ref: ./autosuggest/autosuggest.yaml
 
+/search:
+  $ref: ./search/string.yaml
+
 /search/entities:
   $ref: ./search/entities.yaml
 

@@ -312,3 +312,37 @@ FlatRelation:
     confidence:
       type: number
       format: float
+
+SearchResults:
+  required:
+    - success
+    - total
+    - results
+  properties:
+    success:
+      type: boolean
+    total:
+      type: integer
+      format: int32
+    results:
+      type: array
+      items:
+        $ref: '#/definitions/SearchResult'
+
+SearchResult:
+  required:
+    - entity_id
+    - entity_type
+  properties:
+    entity_id:
+      type: string
+    entity_type:
+      type: string
+    artist:
+      $ref: '#/definitions/Artist'
+    instrument:
+      $ref: '#/definitions/Instrument'
+    release:
+      $ref: '#/definitions/Release'
+    work:
+      $ref: '#/definitions/Work'
