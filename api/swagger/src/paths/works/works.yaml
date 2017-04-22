@@ -16,12 +16,9 @@ get:
 post:
   description: Add new works to DB
   operationId: addWorks
+  security:
+    - DefaultSecurity: []
   parameters:
-    - name: apiKey
-      in: query
-      description: API key
-      required: true
-      type: string
     - name: body
       in: body
       description: work data

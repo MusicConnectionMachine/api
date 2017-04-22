@@ -20,12 +20,9 @@ get:
 put:
   description: Updates the artist with specified ID
   operationId: updateArtist
+  security:
+    - DefaultSecurity: []
   parameters:
-    - name: apiKey
-      in: query
-      description: API key
-      required: true
-      type: string
     - name: id
       in: path
       description: ID of artist
@@ -49,12 +46,9 @@ put:
 delete:
   description: Delete artist
   operationId: deleteArtist
+  security:
+    - DefaultSecurity: []
   parameters:
-    - name: apiKey
-      in: query
-      description: API key
-      required: true
-      type: string
     - name: id
       in: path
       description: ID of artist

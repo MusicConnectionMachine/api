@@ -1,6 +1,6 @@
 x-swagger-router-controller: artists
 get:
-  description: Retruns list of all artists
+  description: Returns list of all artists
   operationId: getAllArtists
   responses:
     "200":
@@ -16,12 +16,9 @@ get:
 post:
   description: Add new artists to DB
   operationId: addArtists
+  security:
+    - DefaultSecurity: []
   parameters:
-    - name: apiKey
-      in: query
-      description: API key
-      required: true
-      type: string
     - name: body
       in: body
       description: artist data

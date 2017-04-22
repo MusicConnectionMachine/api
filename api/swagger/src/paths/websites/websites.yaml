@@ -24,12 +24,9 @@ get:
 post:
   description: Add new websites to DB
   operationId: addWebsites
+  security:
+    - DefaultSecurity: []
   parameters:
-    - name: apiKey
-      in: query
-      description: API key
-      required: true
-      type: string
     - name: body
       in: body
       description: website metadata and content

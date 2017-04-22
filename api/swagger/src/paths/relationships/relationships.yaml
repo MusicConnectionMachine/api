@@ -17,12 +17,9 @@ get:
 post:
   description: Add a new Relationship to DB
   operationId: addRelationship
+  security:
+    - DefaultSecurity: []
   parameters:
-    - name: apiKey
-      in: query
-      description: API key
-      required: true
-      type: string
     - name: body
       in: body
       description: relationship data

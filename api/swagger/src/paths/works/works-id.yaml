@@ -20,12 +20,9 @@ get:
 put:
   description: Update work
   operationId: updateWork
+  security:
+    - DefaultSecurity: []
   parameters:
-    - name: apiKey
-      in: query
-      description: API key
-      required: true
-      type: string
     - name: id
       in: path
       description: ID of work
@@ -49,12 +46,9 @@ put:
 delete:
   description: Delete Work
   operationId: deleteWork
+  security:
+    - DefaultSecurity: []
   parameters:
-    - name: apiKey
-      in: query
-      description: API key
-      required: true
-      type: string
     - name: id
       in: path
       description: ID of work
