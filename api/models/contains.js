@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
             primaryKey: true
         },
         occurrences: {
-            type: DataTypes.TEXT
+            type: DataTypes.JSON
         }
     }, {
         freezeTableName: true, // Model tableName will be the same as the model name
