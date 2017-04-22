@@ -15,6 +15,9 @@
 /artists/{id}:
   $ref: ./artists/artists-id.yaml
 
+/artists/{id}/places:
+  $ref: ./artists/artists-id-places.yaml
+
 /releases:
   $ref: ./releases/releases.yaml
 

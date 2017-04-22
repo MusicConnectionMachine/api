@@ -313,6 +313,19 @@ FlatRelation:
       type: number
       format: float
 
+Place:
+  properties:
+    id:
+      type: string
+    lat:
+      type: number
+    lng:
+      type: number
+    city:
+      type: string
+    description:
+      type: string
+
 SearchResults:
   required:
     - success
