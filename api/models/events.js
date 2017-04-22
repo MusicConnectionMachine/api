@@ -15,7 +15,12 @@ module.exports = function(sequelize, DataTypes) {
             type:DataTypes.TEXT
         }
     }, {
-        freezeTableName: true // Model tableName will be the same as the model name
+        freezeTableName: true, // Model tableName will be the same as the model name
+        classMethods: {
+            associate: function(models) {
+                this.belongsTo(models.entities);
+            }
+        }
     });
 };
 
