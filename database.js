@@ -25,8 +25,8 @@ module.exports = {
         return context;
     },
 
-    connect: function(postgresCS, callback = () => {}) {
-        const context = this.createContext(postgresCS);
+    connect: function(postgresCS, callback = () => {}, logging) {
+        const context = this.createContext(postgresCS, logging);
 
         return this.loadModels()
             .then(() => {
@@ -72,7 +72,7 @@ module.exports = {
         });
     },
 
-    createContext: function(postgresCS) {
+    createContext: function(postgresCS, logging) {
         context = this.start();
 
         var dbConfig = require('./config.js.template');
@@ -96,6 +96,14 @@ module.exports = {
         const databaseURI = postgresCS || process.env.databaseuri;
 
         if (databaseURI) {
+            //logging is enabled by default
+            if(!logging) {
+                dbConfig.logging = false
+            }
+            dbConfig.pool = {
+                max: 1,
+                min: 0
+            };
             context.sequelize = new context.Sequelize(databaseURI, dbConfig);
         } else {
             context.sequelize = new context.Sequelize(configDB.database, configDB.username, configDB.password, {
@@ -106,7 +114,8 @@ module.exports = {
                     max: configDB.max,
                     min: configDB.min,
                     idle: configDB.idleTimeoutMillis
-                }
+                },
+                logging: logging
             });
         }
 

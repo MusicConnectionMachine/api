@@ -19,6 +19,13 @@ var swaggerConfig = {
 };
 
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
+
 require('./database.js').connect(null,function (context) {
 
     SwaggerExpress.create(swaggerConfig, function (err, swaggerExpress) {
