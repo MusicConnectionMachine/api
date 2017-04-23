@@ -60,6 +60,9 @@
 /events:
   $ref: ./events/events.yaml
 
+/feedback:
+  $ref: ./feedback/feedback.yaml
+
 /events/{id}:
   $ref: ./events/events-id.yaml
 

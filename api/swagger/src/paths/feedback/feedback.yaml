@@ -1,0 +1,35 @@
+x-swagger-router-controller: feedback
+get:
+  description: Returns list of all feedbacks
+  operationId: getAllFeedbacks
+  responses:
+    "200":
+      description: Success
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/Feedback'
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"
+
+post:
+  description: Add a new Feedback to DB
+  operationId: addFeedback
+  security:
+    - DefaultSecurity: []
+  parameters:
+    - name: body
+      in: body
+      description: Feedback data
+      required: true
+      schema:
+        $ref: '#/definitions/UpdateFeedback'
+  responses:
+    "200":
+      description: Success
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"

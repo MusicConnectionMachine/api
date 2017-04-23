@@ -359,3 +359,20 @@ SearchResult:
       $ref: '#/definitions/Release'
     work:
       $ref: '#/definitions/Work'
+
+Feedback:
+  properties:
+    entityId:
+      type: string
+    id:
+      type: string
+    feedback:
+      type: boolean
+
+UpdateFeedback:
+  required: [entityId, feedback]
+  properties:
+    entityId:
+      type: string
+    feedback:
+      type: boolean
