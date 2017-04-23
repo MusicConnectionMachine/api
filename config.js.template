@@ -8,5 +8,8 @@ module.exports = {
   },
   "api" : {
     "apiKey": process.env.apikey || "not so secret"
+  },
+  "general": {
+    "logging": process.env.logging || false
   }
 };

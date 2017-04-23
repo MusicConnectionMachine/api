@@ -81,6 +81,10 @@ module.exports = {
         var databaseParams = dbConfig.database;
         context.config = databaseParams;
 
+        if(logging === undefined) {
+            logging = dbConfig.general.logging;
+        }
+
         var configDB = {
             database: databaseParams.collection, //env var: PGDATABASE
             username: databaseParams.username,
@@ -97,9 +101,7 @@ module.exports = {
 
         if (databaseURI) {
             //logging is enabled by default
-            if(!logging) {
-                dbConfig.logging = false
-            }
+            dbConfig.logging = logging;
             dbConfig.pool = {
                 max: 1,
                 min: 0
