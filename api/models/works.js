@@ -8,9 +8,18 @@ module.exports = function(sequelize, DataTypes) {
         title: {
             type: DataTypes.TEXT
         },
+        dedication: {
+            type: DataTypes.TEXT
+        },
+        style: {
+            type: DataTypes.TEXT
+        },
         compositionyear: {
             type: DataTypes.INTEGER
-        }
+        },
+        tags: {
+            type: DataTypes.ARRAY(DataTypes.TEXT)
+        },
     }, {
         freezeTableName: true, // Model tableName will be the same as the model name
         classMethods: {
