@@ -79,3 +79,6 @@
 
 /search/relations:
   $ref: ./search/relations.yaml
+
+/search/findConnected:
+  $ref: ./search/findConnected.yaml
