@@ -3,16 +3,23 @@ get:
   description: Returns entities matching the search criteria
   operationId: searchEntities
   parameters:
-    - name: subjectName
+    - name: q
       in: query
-      description: The name of the subject
+      description: Query string
       required: true
       type: string
-    - name: relationName
+    - name: offset
       in: query
-      description: The name of the relation
-      required: true
-      type: string
+      description: Return results after a certain point
+      required: false
+      type: integer
+      format: int32
+    - name: limit
+      in: query
+      description: Only return (size) entries
+      required: false
+      type: integer
+      format: int32
   responses:
     "200":
       description: Success

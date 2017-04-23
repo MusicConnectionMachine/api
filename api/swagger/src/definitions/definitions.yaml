@@ -28,34 +28,6 @@ Artist:
      type: string
     name:
       type: string
-    artist_type:
-      type: string
-    dateOfBirth :
-      type: string
-      format: date
-    placeOfBirth :
-        type: string
-    dateOfDeath :
-      type: string
-      format: date
-    placeOfDeath :
-      type: string
-    nationality:
-      type: string
-    tags:
-      type: array
-      items:
-        type: string
-    pseudonym:
-      type: array
-      items:
-        type: string
-    source_link:
-      type: string
-    wiki_link:
-      type: string
-    wiki_pageid:
-      type: string
 
 UpdateArtist:
    properties:
@@ -139,9 +111,6 @@ Work:
      type: string
     title:
       type: string
-    compositionyear:
-      type: integer
-      format: int32
 
 UpdateWork:
   properties:
