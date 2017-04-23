@@ -15,6 +15,8 @@ COPY . /usr/src/api
 
 RUN npm run swagger-compile
 
+# Create the docs
+RUN cp api/swagger/swagger.json  public/
 
 EXPOSE 10010
 

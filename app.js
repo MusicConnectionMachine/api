@@ -1,10 +1,13 @@
 'use strict';
 
 var SwaggerExpress = require('swagger-express-mw');
-var app = require('express')();
+var express = require('express');
+var app = express();
 var config = require('./config.js.template');
 module.exports = app; // for testing
 
+//Allow access to docs
+app.use(express.static('public'));
 
 var swaggerConfig = {
     appRoot: __dirname, // required config
