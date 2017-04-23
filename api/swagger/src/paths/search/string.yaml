@@ -1,20 +1,20 @@
 x-swagger-router-controller: search
 get:
   description: Returns entities matching the search criteria
-  operationId: searchEntities
+  operationId: searchString
   parameters:
     - name: q
       in: query
       description: Query string
       required: true
       type: string
-    - name: offset
+    - name: from
       in: query
       description: Return results after a certain point
       required: false
       type: integer
       format: int32
-    - name: limit
+    - name: size
       in: query
       description: Only return (size) entries
       required: false
@@ -24,7 +24,7 @@ get:
     "200":
       description: Success
       schema:
-        $ref: '#/definitions/EntityResults'
+        $ref: '#/definitions/SearchResults'
     default:
       description: Error
       schema:

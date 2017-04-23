@@ -20,12 +20,9 @@ get:
 put:
   description: Update instrument
   operationId: updateInstrument
+  security:
+    - DefaultSecurity: []
   parameters:
-    - name: apiKey
-      in: query
-      description: API key
-      required: true
-      type: string
     - name: id
       in: path
       description: ID of instrument
@@ -49,12 +46,9 @@ put:
 delete:
   description: Delete instrument
   operationId: deleteInstrument
+  security:
+    - DefaultSecurity: []
   parameters:
-    - name: apiKey
-      in: query
-      description: API key
-      required: true
-      type: string
     - name: id
       in: path
       description: ID of Instrument

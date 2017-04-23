@@ -21,12 +21,9 @@ get:
 put:
   description: Update website
   operationId: updateWebsite
+  security:
+    - DefaultSecurity: []
   parameters:
-    - name: apiKey
-      in: query
-      description: API key
-      required: true
-      type: string
     - name: id
       in: path
       description: ID of website
@@ -51,12 +48,9 @@ put:
 delete:
   description: Delete website
   operationId: deleteWebsite
+  security:
+    - DefaultSecurity: []
   parameters:
-    - name: apiKey
-      in: query
-      description: API key
-      required: true
-      type: string
     - name: id
       in: path
       description: ID of website

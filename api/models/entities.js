@@ -17,6 +17,9 @@ module.exports = function(sequelize, DataTypes) {
                 this.hasOne(models.contains);
 
                 this.hasMany(models.relationshipEntities);
+
+                this.hasMany(models.events);
+                this.hasMany(models.feedbacks);
             }
         }
 

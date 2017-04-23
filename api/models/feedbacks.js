@@ -1,18 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
-    return sequelize.define('events', {
+    return sequelize.define('feedbacks', {
         id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
-        start:{
-            type:DataTypes.STRING
-        },
-        end:{
-            type:DataTypes.STRING
-        },
-        description:{
-            type:DataTypes.TEXT
+        feedback:{
+            type: DataTypes.BOOLEAN //TRUE - Like, FALSE - Wrong Data
         }
     }, {
         freezeTableName: true, // Model tableName will be the same as the model name
@@ -23,4 +17,3 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
 };
-

@@ -16,12 +16,9 @@ get:
 post:
   description: Add new entities to DB
   operationId: addEntity
+  security:
+    - DefaultSecurity: []
   parameters:
-    - name: apiKey
-      in: query
-      description: API key
-      required: true
-      type: string
     - name: body
       in: body
       description: entity data

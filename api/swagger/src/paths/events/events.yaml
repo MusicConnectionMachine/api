@@ -17,12 +17,9 @@ get:
 post:
   description: Add a new Event to DB
   operationId: addEvent
+  security:
+    - DefaultSecurity: []
   parameters:
-    - name: apiKey
-      in: query
-      description: API key
-      required: true
-      type: string
     - name: body
       in: body
       description: Event data

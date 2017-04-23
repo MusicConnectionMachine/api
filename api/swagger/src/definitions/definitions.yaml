@@ -28,34 +28,6 @@ Artist:
      type: string
     name:
       type: string
-    artist_type:
-      type: string
-    dateOfBirth :
-      type: string
-      format: date
-    placeOfBirth :
-        type: string
-    dateOfDeath :
-      type: string
-      format: date
-    placeOfDeath :
-      type: string
-    nationality:
-      type: string
-    tags:
-      type: array
-      items:
-        type: string
-    pseudonym:
-      type: array
-      items:
-        type: string
-    source_link:
-      type: string
-    wiki_link:
-      type: string
-    wiki_pageid:
-      type: string
 
 UpdateArtist:
    properties:
@@ -139,9 +111,6 @@ Work:
      type: string
     title:
       type: string
-    compositionyear:
-      type: integer
-      format: int32
 
 UpdateWork:
   properties:
@@ -312,3 +281,67 @@ FlatRelation:
     confidence:
       type: number
       format: float
+
+Place:
+  properties:
+    id:
+      type: string
+    lat:
+      type: number
+    lng:
+      type: number
+    city:
+      type: string
+    description:
+      type: string
+
+SearchResults:
+  required:
+    - success
+    - total
+    - results
+  properties:
+    success:
+      type: boolean
+    total:
+      type: integer
+      format: int32
+    results:
+      type: array
+      items:
+        $ref: '#/definitions/SearchResult'
+
+SearchResult:
+  required:
+    - entity_id
+    - entity_type
+  properties:
+    entity_id:
+      type: string
+    entity_type:
+      type: string
+    artist:
+      $ref: '#/definitions/Artist'
+    instrument:
+      $ref: '#/definitions/Instrument'
+    release:
+      $ref: '#/definitions/Release'
+    work:
+      $ref: '#/definitions/Work'
+
+Feedback:
+  properties:
+    entityId:
+      type: string
+    id:
+      type: string
+    feedback:
+      type: boolean
+
+UpdateFeedback:
+  required: [entityId, feedback]
+  properties:
+    entityId:
+      type: string
+    feedback:
+      type: boolean

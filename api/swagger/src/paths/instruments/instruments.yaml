@@ -16,12 +16,9 @@ get:
 post:
   description: Add new instruments to DB
   operationId: addInstrument
+  security:
+    - DefaultSecurity: []
   parameters:
-    - name: apiKey
-      in: query
-      description: API key
-      required: true
-      type: string
     - name: body
       in: body
       description: instruments data

@@ -1,6 +1,6 @@
 x-swagger-router-controller: entities
 get:
-  description: Retruns entity with specified ID
+  description: Returns entity with specified ID
   operationId: getEntityByID
   parameters:
     - name: id
@@ -20,12 +20,9 @@ get:
 put:
   description: Update entity
   operationId: updateEntity
+  security:
+    - DefaultSecurity: []
   parameters:
-    - name: apiKey
-      in: query
-      description: API key
-      required: true
-      type: string
     - name: id
       in: path
       description: ID of website
@@ -49,12 +46,9 @@ put:
 delete:
   description: Delete entity
   operationId: deleteEntity
+  security:
+    - DefaultSecurity: []
   parameters:
-    - name: apiKey
-      in: query
-      description: API key
-      required: true
-      type: string
     - name: id
       in: path
       description: ID of entity

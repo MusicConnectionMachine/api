@@ -15,6 +15,9 @@
 /artists/{id}:
   $ref: ./artists/artists-id.yaml
 
+/artists/{id}/places:
+  $ref: ./artists/artists-id-places.yaml
+
 /releases:
   $ref: ./releases/releases.yaml
 
@@ -57,6 +60,9 @@
 /events:
   $ref: ./events/events.yaml
 
+/feedback:
+  $ref: ./feedback/feedback.yaml
+
 /events/{id}:
   $ref: ./events/events-id.yaml
 
@@ -64,6 +70,9 @@
 
 /autosuggest:
   $ref: ./autosuggest/autosuggest.yaml
+
+/search:
+  $ref: ./search/string.yaml
 
 /search/entities:
   $ref: ./search/entities.yaml
