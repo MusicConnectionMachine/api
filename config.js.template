@@ -10,6 +10,6 @@ module.exports = {
     "apiKey": process.env.apikey || "not so secret"
   },
   "general": {
-    "logging": process.env.logging || false
+    "logging": process.env.logging ? console.log : false
   }
 };
