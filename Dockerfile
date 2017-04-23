@@ -17,6 +17,7 @@ RUN npm run swagger-compile
 
 # Create the docs
 RUN cp api/swagger/swagger.json  public/
+RUN sed -i 's/localhost:10010/mcmapi.azurewebsites.net/' public/swagger.json
 
 EXPOSE 10010
 
