@@ -14,6 +14,12 @@
 
 /artists/{id}:
   $ref: ./artists/artists-id.yaml
+  
+/artists/{id}/relationships:
+  $ref: ./artists/artists-id-relationships.yaml
+
+/artists/{id}/relationships/autosuggest:
+  $ref: ./artists/artists-id-relationships-autosuggest.yaml
 
 /artists/{id}/places:
   $ref: ./artists/artists-id-places.yaml
@@ -29,6 +35,12 @@
 
 /works/{id}:
   $ref: ./works/works-id.yaml
+
+/works/{id}/relationships:
+  $ref: ./works/works-id-relationships.yaml
+
+/works/{id}/relationships/autosuggest:
+  $ref: ./works/works-id-relationships-autosuggest.yaml
 
 /instruments:
   $ref: ./instruments/instruments.yaml

@@ -1,8 +1,27 @@
 'use strict';
 module.exports = function (context) {
     var relationships = context.models.relationships;
+    var models = context.models;
 
-    return {
+    const functions = {
+        mapArtistToSubject: function (artistId) {
+            return models.artists.findById(artistId)
+                .then(artist => {
+                    return artist.getEntity();
+                })
+                .then(entity => {
+                    return entity.getRelEntity();
+                });
+        },
+        mapWorkToSubject: function (workId) {
+            return models.works.findById(workId)
+                .then(artist => {
+                    return artist.getEntity();
+                })
+                .then(entity => {
+                    return entity.getRelEntity();
+                });
+        },
         findAllRelationships: function () {
             return relationships.findAll({
                 attributes: [
@@ -10,13 +29,49 @@ module.exports = function (context) {
                 ]
             });
         },
+        findAllRelationshipsBySubject: function (subject, relation, object, offset = 0, limit = 20) {
+            var subjectWhere = subject ? { id: subject } : undefined;
+            var objectWhere = object ? { id: object } : undefined;
+            var relationWhere = relation ? relation : undefined;
+
+            return relationships.findAll({
+                attributes: [
+                    'id',
+                    'confidence',
+                    'relation'
+                ],
+                where: {
+                    relation: relationWhere
+                },
+                include: [
+                    { model: models.relationshipDescriptions },
+                    { model: models.relationshipOccurrences },
+                    { model: models.relationshipEntities, as: 'Subject', where: subjectWhere},
+                    { model: models.relationshipEntities, as: 'Object', where: objectWhere }
+                ],
+                offset,
+                limit
+            });
+        },
+        findSuggestions: function (subject, query, offset = 0, limit = 20) {
+            // TODO Perform an actual search (Using Elasticsearch? PostgreSQL?)
+            return Promise.resolve([]);
+        },
         findRelationshipById: function (relationship_id) {
             return relationships.findOne({
                 where: {
                     id: relationship_id
                 },
                 attributes: [
-                    'id'
+                    'id',
+                    'confidence',
+                    'relation'
+                ],
+                include: [
+                    { model: models.relationshipDescriptions },
+                    { model: models.relationshipOccurrences },
+                    { model: models.relationshipEntities, as: 'Subject' },
+                    { model: models.relationshipEntities, as: 'Object' }
                 ]
             });
         },
@@ -71,5 +126,7 @@ module.exports = function (context) {
                 });
             });
         }
-    }
+    };
+
+    return functions;
 };

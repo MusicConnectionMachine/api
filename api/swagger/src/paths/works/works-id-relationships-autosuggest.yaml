@@ -1,0 +1,36 @@
+x-swagger-router-controller: relationships
+get:
+  description: Retruns list of suggestions
+  operationId: getSuggestionsForWork
+  parameters:
+    - name: id
+      in: path
+      description: ID of work
+      required: true
+      type: integer
+    - name: q
+      in: query
+      description: the query
+      required: true
+      type: string
+    - name: offset
+      in: query
+      description: the number of entries that should be skipped
+      required: false
+      type: integer
+    - name: limit
+      in: query
+      description: the number of entries that should be returned
+      required: false
+      type: integer
+  responses:
+    "200":
+      description: Success
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/Relationship'
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"
