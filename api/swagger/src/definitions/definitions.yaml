@@ -345,3 +345,20 @@ UpdateFeedback:
       type: string
     feedback:
       type: boolean
+
+RelationsFeedback:
+  properties:
+    relationshipId:
+      type: string
+    id:
+      type: string
+    feedback:
+      type: string
+
+UpdateRelationsFeedback:
+  required: [relationshipId, feedback]
+  properties:
+    relationshipId:
+        type: string
+    feedback:
+      type: string

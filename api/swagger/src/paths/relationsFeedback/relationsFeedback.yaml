@@ -1,0 +1,35 @@
+x-swagger-router-controller: relationsFeedbacks
+get:
+  description: Returns list of all Relation feedbacks
+  operationId: getAllRelationsFeedbacks
+  responses:
+    "200":
+      description: Success
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/RelationsFeedback'
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"
+
+post:
+  description: Add a new Feedback to DB
+  operationId: addRelationsFeedback
+  security:
+    - DefaultSecurity: []
+  parameters:
+    - name: body
+      in: body
+      description: Feedback data
+      required: true
+      schema:
+        $ref: '#/definitions/UpdateRelationsFeedback'
+  responses:
+    "200":
+      description: Success
+    default:
+      description: Error
+      schema:
+        $ref: "#/definitions/ErrorResponse"

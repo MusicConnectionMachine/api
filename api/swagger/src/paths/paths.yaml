@@ -14,7 +14,7 @@
 
 /artists/{id}:
   $ref: ./artists/artists-id.yaml
-  
+
 /artists/{id}/relationships:
   $ref: ./artists/artists-id-relationships.yaml
 
@@ -91,3 +91,6 @@
 
 /search/relations:
   $ref: ./search/relations.yaml
+
+/relationsFeedback:
+  $ref: ./relationsFeedback/relationsFeedback.yaml

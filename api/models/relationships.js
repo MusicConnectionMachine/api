@@ -20,6 +20,7 @@ module.exports = function(sequelize, DataTypes) {
                 this.belongsTo(models.relationshipEntities, {foreignKey: 'subjectId', as: 'Subject'});
                 this.belongsTo(models.relationshipEntities, {foreignKey: 'objectId', as: 'Object'});
 
+                this.hasMany(models.relationsFeedbacks);
             }
         }
     });
