@@ -12,12 +12,15 @@ module.exports = {
 };
 
 function getAllReleases(req, res) {
-    releases.findAllReleases().then(function(list) {
+    var query = req.swagger.params.q.value;
+    var limit = req.swagger.params.limit.value;
+    var offset = req.swagger.params.offset.value;
+
+    releases.findAllReleases(query, {limit: limit, offset: offset}).then(function(list) {
         res.status(200).json(list);
     }).catch(function(error) {
         res.status(500).send(error);
     });
-
 }
 
 function getReleaseByID(req, res) {

@@ -2,9 +2,28 @@
 module.exports = function(context) {
     var works = context.models.works;
     return {
-        findAllWorks: function() {
-            return works.findAll({
-                attributes: ['title', 'id', 'compositionyear']
+        findAllWorks: function(searchString, options) {
+            let whereClause = {};
+
+            if (searchString != undefined) {
+                whereClause = {
+                    title: {
+                        $ilike: '%' + searchString + '%'
+                    }
+                }
+            }
+
+            return works.findAndCountAll({
+                attributes: ['title', 'id', 'compositionyear'],
+                where: whereClause,
+                order: [['id', 'DESC']],
+                limit: options && options.limit,
+                offset: options && options.offset
+            }).then(results => {
+                return {
+                    'items': results.rows,
+                    'total': results.count
+                }
             });
         },
         findWorksById: function(work_id) {

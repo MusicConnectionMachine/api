@@ -3,10 +3,28 @@ module.exports = function (context) {
     // Imports
     var instruments = context.models.instruments;
     return {
-        findAllInstruments: function () {
-            return instruments.findAll({
-                attributes: ['name', 'id'
-                ]
+        findAllInstruments: function (searchString, options) {
+            let whereClause = {};
+
+            if (searchString != undefined) {
+                whereClause = {
+                    name: {
+                        $ilike: '%' + searchString + '%'
+                    }
+                }
+            }
+
+            return instruments.findAndCountAll({
+                attributes: ['name', 'id'],
+                where: whereClause,
+                order: [['id', 'DESC']],
+                limit: options && options.limit,
+                offset: options && options.offset
+            }).then(results => {
+                return {
+                    'items': results.rows,
+                    'total': results.count
+                }
             });
         },
         findInstrumentsById: function (instrument_id) {

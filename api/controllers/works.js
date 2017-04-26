@@ -13,7 +13,11 @@ module.exports = {
 };
 
 function getAllWorks(req, res) {
-    works.findAllWorks().then(function(list) {
+    var query = req.swagger.params.q.value;
+    var limit = req.swagger.params.limit.value;
+    var offset = req.swagger.params.offset.value;
+
+    works.findAllWorks(query, {limit: limit, offset: offset}).then(function(list) {
         res.status(200).json(list);
     }).catch(function(error) {
         res.status(500).send(error);

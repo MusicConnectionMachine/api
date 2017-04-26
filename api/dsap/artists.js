@@ -7,11 +7,30 @@ module.exports = function(context) {
         //returns all artists
 
     return {
-        findAllArtists: function () {
-            return artists.findAll({
+        findAllArtists: function (searchString, options) {
+            let whereClause = {};
+
+            if (searchString != undefined) {
+                whereClause = {
+                    name: {
+                        $ilike: '%' + searchString + '%'
+                    }
+                }
+            }
+
+            return artists.findAndCountAll({
                 attributes: ['name', 'id', 'artist_type', 'dateOfBirth', 'placeOfBirth', 'dateOfDeath',
                     'placeOfDeath', 'nationality', 'tags', 'pseudonym', 'source_link', 'wiki_link', 'wiki_pageid'
-                ]
+                ],
+                where: whereClause,
+                order: [['id', 'DESC']],
+                limit: options && options.limit,
+                offset: options && options.offset
+            }).then(results => {
+                return {
+                    'items': results.rows,
+                    'total': results.count
+                }
             });
         },
         findArtistsById: function (artist_id) {
