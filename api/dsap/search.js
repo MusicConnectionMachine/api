@@ -29,7 +29,7 @@ module.exports = function (context) {
     }
 
     function searchReleases(searchString, options) {
-        models.releases.findAll({
+        return models.releases.findAll({
             where: {
                 title: {
                     $ilike: '%' + searchString + '%'
@@ -38,11 +38,11 @@ module.exports = function (context) {
             order: [['id', 'DESC']],
             limit: options.limit,
             offset: options.offset
-        })
+        });
     }
 
     function searchWorks(searchString, options) {
-        models.releases.findAll({
+        return models.releases.findAll({
             where: {
                 title: {
                     $ilike: '%' + searchString + '%'
@@ -51,7 +51,7 @@ module.exports = function (context) {
             order: [['id', 'DESC']],
             limit: options.limit,
             offset: options.offset
-        })
+        });
     }
 
     return {
@@ -71,8 +71,13 @@ module.exports = function (context) {
                     return { releases: results }
                 });
 
+            const worksSearch = searchWorks(searchString, {limit: limit, offset: offset})
+                .then((results) => {
+                    return { works: results }
+                });
+
             return Promise.all([
-                artistsSearch, instrumentsSearch, releasesSearch
+                artistsSearch, instrumentsSearch, releasesSearch, worksSearch
             ]).then(function(result) {
                 return result;
             });
