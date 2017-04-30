@@ -18,7 +18,11 @@ module.exports = function(sequelize, DataTypes) {
             //Sequelize DATEONLY returns full-date format with Timezone, we need
             //date in YYYY-MM-DD format.
             get:function(){
-                return moment.utc(this.getDataValue('dateOfBirth')).format('YYYY-MM-DD');
+                const dateValue = this.getDataValue('dateOfBirth');
+                if (!dateValue) {
+                    return null;
+                }
+                return moment.utc(dateValue).format('YYYY-MM-DD');
             }
         },
         placeOfBirth: {
@@ -29,7 +33,11 @@ module.exports = function(sequelize, DataTypes) {
             //Sequelize DATEONLY returns full-date format with Timezone, we need
             //date in YYYY-MM-DD format.
             get:function(){
-                return moment.utc(this.getDataValue('dateOfDeath')).format('YYYY-MM-DD');
+                const dateValue = this.getDataValue('dateOfDeath');
+                if (!dateValue) {
+                    return null;
+                }
+                return moment.utc(dateValue).format('YYYY-MM-DD');
             }
         },
         placeOfDeath: {
