@@ -1,4 +1,7 @@
 'use strict';
+
+var config = require('../../config.js.template');
+
 module.exports = function(context) {
     var works = context.models.works;
     return {
@@ -13,11 +16,17 @@ module.exports = function(context) {
                 }
             }
 
+            let limit = config.api.maxLimit;
+
+            if (options && options.limit && options.limit < limit) {
+                limit = options.limit;
+            }
+
             return works.findAndCountAll({
                 attributes: ['title', 'id', 'compositionyear'],
                 where: whereClause,
                 order: [['id', 'DESC']],
-                limit: options && options.limit,
+                limit: limit,
                 offset: options && options.offset
             }).then(results => {
                 return {

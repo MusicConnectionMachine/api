@@ -1,4 +1,7 @@
 'use strict';
+
+var config = require('../../config.js.template');
+
 module.exports = function (context) {
     // Imports
     var instruments = context.models.instruments;
@@ -14,11 +17,17 @@ module.exports = function (context) {
                 }
             }
 
+            let limit = config.api.maxLimit;
+
+            if (options && options.limit && options.limit < limit) {
+                limit = options.limit;
+            }
+
             return instruments.findAndCountAll({
                 attributes: ['name', 'id'],
                 where: whereClause,
                 order: [['id', 'DESC']],
-                limit: options && options.limit,
+                limit: limit,
                 offset: options && options.offset
             }).then(results => {
                 return {
