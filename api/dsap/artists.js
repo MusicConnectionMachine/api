@@ -1,5 +1,7 @@
 'use strict';
 
+var config = require('../../config.js.template');
+
 module.exports = function(context) {
         // Imports
     var artists = context.models.artists;
@@ -18,13 +20,19 @@ module.exports = function(context) {
                 }
             }
 
+            let limit = config.api.maxLimit;
+
+            if (options && options.limit && options.limit < limit) {
+                limit = options.limit;
+            }
+
             return artists.findAndCountAll({
                 attributes: ['name', 'id', 'artist_type', 'dateOfBirth', 'placeOfBirth', 'dateOfDeath',
                     'placeOfDeath', 'nationality', 'tags', 'pseudonym', 'source_link', 'wiki_link', 'wiki_pageid'
                 ],
                 where: whereClause,
                 order: [['id', 'DESC']],
-                limit: options && options.limit,
+                limit: limit,
                 offset: options && options.offset
             }).then(results => {
                 return {

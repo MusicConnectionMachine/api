@@ -7,7 +7,8 @@ module.exports = {
     "collection": process.env.databasecollection || "postgres",
   },
   "api" : {
-    "apiKey": process.env.apikey || "not so secret"
+    "apiKey": process.env.apikey || "not so secret",
+    "maxLimit": process.env.maxlimit || 50,
   },
   "general": {
     "logging": process.env.logging ? console.log : false
