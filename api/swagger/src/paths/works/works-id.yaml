@@ -12,7 +12,7 @@ get:
     "200":
       description: Success
       schema:
-        $ref: '#/definitions/Work'
+        type: object
     default:
       description: Error
       schema:

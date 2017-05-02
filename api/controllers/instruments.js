@@ -6,7 +6,6 @@ var instruments = require('../dsap/instruments.js')(context);
 module.exports = {
     getAllInstruments: getAllInstruments,
     getInstrumentByID: getInstrumentByID,
-    getInstrumentByWorkID: getInstrumentByWorkID,
     addInstrument: addInstrument,
     updateInstrument: updateInstrument,
     deleteInstrument: deleteInstrument
@@ -61,10 +60,4 @@ function deleteInstrument(req, res) {
     }).catch(function(error) {
         res.status(500).send(error);
     });
-}
-
-function getInstrumentByWorkID(req, res){
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
 }

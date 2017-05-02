@@ -25,8 +25,6 @@ describe("db", function() {
             'relationshipOccurrences',
             'relationships',
             'relationshipTypes',
-            'releases',
-            'websites',
             'works'
         ];
 
@@ -97,26 +95,6 @@ describe("db", function() {
     it("should select from table relationships", function (done) {
         require('../api/dsap/relationships')(context)
             .findAllRelationships()
-            .then(function () {
-                done();
-            })
-            .catch(function (err) {
-                done(err);
-            });
-    });
-    it("should select from table releases", function (done) {
-        require('../api/dsap/releases')(context)
-            .findAllReleases()
-            .then(function () {
-                done();
-            })
-            .catch(function (err) {
-                done(err);
-            });
-    });
-    it("should select from table websites", function (done) {
-        require('../api/dsap/websites')(context)
-            .findAllWebsites()
             .then(function () {
                 done();
             })

@@ -24,11 +24,8 @@
 /artists/{id}/places:
   $ref: ./artists/artists-id-places.yaml
 
-/releases:
-  $ref: ./releases/releases.yaml
-
-/releases/{id}:
-  $ref: ./releases/releases-id.yaml
+/artists/{id}/events:
+  $ref: ./artists/artists-id-events.yaml
 
 /works:
   $ref: ./works/works.yaml
@@ -47,16 +44,6 @@
 
 /instruments/{id}:
   $ref: ./instruments/instruments-id.yaml
-
-# Group 2
-/websites:
-  $ref: ./websites/websites.yaml
-
-/websites/{id}:
-  $ref: ./websites/websites-id.yaml
-
-/download/{filename}:
-  $ref: ./download/download-filename.yaml
 
 # Group 3&4
 
@@ -79,18 +66,6 @@
   $ref: ./events/events-id.yaml
 
 # Group 5
-
-/autosuggest:
-  $ref: ./autosuggest/autosuggest.yaml
-
-/search:
-  $ref: ./search/string.yaml
-
-/search/entities:
-  $ref: ./search/entities.yaml
-
-/search/relations:
-  $ref: ./search/relations.yaml
 
 /relationsFeedback:
   $ref: ./relationsFeedback/relationsFeedback.yaml

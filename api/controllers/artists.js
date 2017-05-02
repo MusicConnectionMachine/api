@@ -6,6 +6,7 @@ var artists = require('../dsap/artists.js')(context);
 module.exports = {
     getAllArtists: getAllArtists,
     getArtistByID: getArtistByID,
+    getEventsOfArtist: getEventsOfArtist,
     addArtist: addArtist,
     updateArtist: updateArtist,
     deleteArtist: deleteArtist
@@ -27,6 +28,15 @@ function getArtistByID(req, res) {
     var id = req.swagger.params.id.value;
     artists.findArtistsById(id).then(function(artistInfo) {
         res.status(200).json(artistInfo);
+    }).catch(function(error) {
+        res.status(500).send(error);
+    });
+}
+
+function getEventsOfArtist(req, res) {
+    var id = req.swagger.params.id.value;
+    artists.findArtistWithEvents(id).then(function(artistWithEvents) {
+        res.status(200).json(artistWithEvents.entity.events);
     }).catch(function(error) {
         res.status(500).send(error);
     });
@@ -60,9 +70,4 @@ function deleteArtist(req, res) {
     }).catch(function(error) {
         res.status(500).send(error);
     });
-}
-
-function getArtistByWorkID(req, res) {
-    res.status(501);
-    res.json('Not implemented!');
 }

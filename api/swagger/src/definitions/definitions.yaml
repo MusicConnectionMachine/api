@@ -1,3 +1,7 @@
+###########################################################################################
+### This file might be deprecated. Please check the Github issues for more information. ###
+###########################################################################################
+
 ErrorResponse:
   required:
     - message

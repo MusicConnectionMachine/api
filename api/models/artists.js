@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
             get:function(){
                 const dateValue = this.getDataValue('dateOfBirth');
                 if (!dateValue) {
-                    return null;
+                    return undefined;
                 }
                 return moment.utc(dateValue).format('YYYY-MM-DD');
             }
@@ -35,7 +35,7 @@ module.exports = function(sequelize, DataTypes) {
             get:function(){
                 const dateValue = this.getDataValue('dateOfDeath');
                 if (!dateValue) {
-                    return null;
+                    return undefined;
                 }
                 return moment.utc(dateValue).format('YYYY-MM-DD');
             }
@@ -68,7 +68,6 @@ module.exports = function(sequelize, DataTypes) {
                 this.belongsToMany(models.works, {through:'ArtistComposedWork'});
                 this.belongsToMany(models.instruments, {through:'ArtistPlayedInstrument'});
                 this.belongsToMany(models.instruments, {through:'ArtistComposedInstrument'});
-                this.belongsToMany(models.releases, {through:'ArtistPerformedRelease'});
 
                 this.belongsTo(models.entities);
             }

@@ -25,13 +25,6 @@ get:
       description: Success
       schema:
         type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/definitions/Work'
-          count:
-            type: integer
     default:
       description: Error
       schema:

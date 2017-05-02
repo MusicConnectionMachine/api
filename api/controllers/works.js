@@ -6,7 +6,6 @@ var works = require('../dsap/works.js')(context);
 module.exports = {
     getAllWorks: getAllWorks,
     getWorkByID: getWorkByID,
-    getWorkByArtistID:getWorkByArtistID,
     addWorks: addWorks,
     updateWork: updateWork,
     deleteWork: deleteWork
@@ -59,10 +58,4 @@ function deleteWork(req, res) {
     }).catch(function(error) {
         res.status(500).send(error);
     });
-}
-
-function getWorkByArtistID(req, res) {
-    console.log(req.swagger.params);
-    res.status(501);
-    res.json('Not implemented!');
 }

@@ -8,7 +8,7 @@ get:
       schema:
         type: array
         items:
-          $ref: '#/definitions/Relationship'
+          type: object
     default:
       description: Error
       schema:

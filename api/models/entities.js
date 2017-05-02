@@ -11,13 +11,10 @@ module.exports = function(sequelize, DataTypes) {
             associate: function(models) {
                 this.hasOne(models.artists);
                 this.hasOne(models.works);
-                this.hasOne(models.releases);
                 this.hasOne(models.instruments);
-
                 this.hasOne(models.contains);
 
                 this.hasMany(models.relationshipEntities);
-
                 this.hasMany(models.events);
                 this.hasMany(models.feedbacks);
             }

@@ -1,7 +1,7 @@
-x-swagger-router-controller: places
+x-swagger-router-controller: artists
 get:
-  description: Retruns list of places of an artist
-  operationId: getAllPlacesByArtist
+  description: Retruns list of events of an artist
+  operationId: getEventsOfArtist
   parameters:
     - name: id
       in: path
