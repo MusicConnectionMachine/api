@@ -64,10 +64,10 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         freezeTableName: true, // Model tableName will be the same as the model name
         classMethods: {
-            associate: function(models) {
-                this.belongsToMany(models.works, {through:'ArtistComposedWork'});
-                this.belongsToMany(models.instruments, {through:'ArtistPlayedInstrument'});
-                this.belongsToMany(models.instruments, {through:'ArtistComposedInstrument'});
+            associate: function (models) {
+                this.belongsToMany(models.works, {through: 'ArtistComposedWork'});
+                this.belongsToMany(models.instruments, {through: 'ArtistPlayedInstrument', as: 'Player'});
+                this.belongsToMany(models.instruments, {through: 'ArtistComposedInstrument', as: 'Composer'});
 
                 this.belongsTo(models.entities);
             }
